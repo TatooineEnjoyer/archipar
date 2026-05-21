@@ -103,7 +103,7 @@ const cases = [
   {
     title: "Хамам как часть wellness-зоны",
     type: "Комплекс в доме",
-    image: "/images/modules/case-02.jpg",
+    image: "/images/cases/case-02.jpg",
   },
   {
     title: "Парная с авторскими сценариями климата",
