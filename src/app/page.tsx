@@ -42,7 +42,7 @@ const complexes = [
   },
   {
     title: "Гостевой и коммерческий формат",
-    text: "Решение для загородных отелей, клубов и частных резиденций, где важны масштаб, поток гостей и стабильная эксплуатация.",
+    text: "Решение для отелей, клубов и резиденций, где важны масштаб, поток гостей и стабильная эксплуатация.",
     image: "/images/complexes/commercial-complex.jpg",
     href: "/bath-complexes",
     meta: "hospitality",
@@ -181,38 +181,38 @@ export default function Home() {
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-90"
+          className="image-drift object-cover opacity-90"
         />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(255,255,255,0.16),transparent_28%),linear-gradient(90deg,rgba(0,0,0,0.78),rgba(0,0,0,0.28),rgba(0,0,0,0.08))]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_66%_18%,rgba(255,255,255,0.16),transparent_30%),linear-gradient(90deg,rgba(0,0,0,0.76),rgba(0,0,0,0.35),rgba(0,0,0,0.16))]" />
         <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/78 to-transparent" />
 
-        <div className="relative z-10 flex min-h-screen items-end px-6 pb-10 pt-32 md:px-12 md:pb-16 lg:px-20">
+        <div className="container-premium relative z-10 flex min-h-screen items-end pb-10 pt-32 md:pb-14">
           <div className="w-full">
-            <div className="mb-8 flex flex-wrap items-center gap-3 text-white/70">
-              <span className="rounded-full border border-white/18 bg-white/10 px-4 py-2 text-[11px] uppercase tracking-[0.28em] backdrop-blur">
+            <div className="reveal-up mb-6 flex flex-wrap items-center gap-3 text-white/70">
+              <span className="rounded-full border border-white/20 bg-black/24 px-4 py-2 text-[10px] uppercase tracking-[0.24em] backdrop-blur md:text-[11px]">
                 architecture · climate · bath culture
               </span>
-              <span className="rounded-full border border-white/18 bg-white/10 px-4 py-2 text-[11px] uppercase tracking-[0.28em] backdrop-blur">
+              <span className="rounded-full border border-white/20 bg-black/24 px-4 py-2 text-[10px] uppercase tracking-[0.24em] backdrop-blur md:text-[11px]">
                 ARCHIPAR
               </span>
             </div>
 
-            <div className="grid gap-8 lg:grid-cols-[1fr_360px] lg:items-end">
+            <div className="grid gap-7 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-end">
               <div>
-                <h1 className="max-w-6xl text-6xl font-light leading-[0.88] tracking-[-0.075em] text-white md:text-8xl lg:text-[128px]">
+                <h1 className="reveal-up reveal-delay-1 max-w-4xl text-5xl font-light leading-[0.92] tracking-[-0.065em] text-white md:text-7xl lg:text-[88px] xl:text-[96px]">
                   Премиальные банные комплексы под ключ
                 </h1>
 
-                <p className="mt-8 max-w-2xl text-lg leading-relaxed text-white/76 md:text-xl">
+                <p className="reveal-up reveal-delay-2 mt-6 max-w-xl text-base leading-relaxed text-white/76 md:text-lg">
                   Проектируем цельные wellness-пространства, где архитектура,
                   инженерия климата, пар, вода, свет и материалы работают как
                   один сценарий восстановления.
                 </p>
 
-                <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+                <div className="reveal-up reveal-delay-3 mt-8 flex flex-col gap-4 sm:flex-row">
                   <Link
                     href="#request"
-                    className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-4 text-sm font-semibold text-black transition hover:bg-[#e5d8c4]"
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-[#f7f2e9] px-7 py-4 text-sm font-semibold text-black shadow-xl shadow-black/10 transition hover:bg-[#c8aa78] hover:text-black"
                   >
                     Обсудить проект
                     <ArrowRight className="h-4 w-4" />
@@ -220,7 +220,7 @@ export default function Home() {
 
                   <Link
                     href="#complexes"
-                    className="inline-flex items-center justify-center gap-2 rounded-full border border-white/35 px-7 py-4 text-sm font-semibold text-white transition hover:bg-white/10"
+                    className="inline-flex items-center justify-center gap-2 rounded-full border border-white/35 bg-white/12 px-7 py-4 text-sm font-semibold text-white backdrop-blur transition hover:bg-white hover:text-black"
                   >
                     Смотреть решения
                     <ArrowUpRight className="h-4 w-4" />
@@ -228,14 +228,14 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="hidden rounded-[34px] border border-white/15 bg-white/10 p-5 text-white backdrop-blur-xl lg:block">
-                <p className="text-xs uppercase tracking-[0.28em] text-white/52">
+              <div className="premium-ring reveal-up reveal-delay-2 hidden rounded-[32px] bg-black/28 p-5 text-white backdrop-blur-xl lg:block">
+                <p className="text-xs uppercase tracking-[0.26em] text-white/52">
                   комплексный подход
                 </p>
-                <div className="mt-6 grid gap-4">
+                <div className="mt-5 grid gap-4">
                   {numbers.map((item) => (
                     <div key={item.label} className="border-t border-white/12 pt-4">
-                      <p className="text-3xl font-light tracking-[-0.04em]">
+                      <p className="text-2xl font-light tracking-[-0.04em]">
                         {item.value}
                       </p>
                       <p className="mt-1 text-sm text-white/62">{item.label}</p>
@@ -248,348 +248,374 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-black/10 bg-[#efe7dc] px-6 py-6 md:px-12 lg:px-20">
-        <div className="grid gap-4 md:grid-cols-4">
-          {trust.map((item) => (
-            <div key={item} className="flex items-start gap-3 text-sm leading-relaxed text-black/70">
-              <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#8a6a43]" />
-              <span>{item}</span>
-            </div>
-          ))}
-        </div>
+      <section className="border-y border-black/10 bg-[#efe7dc] py-6">
+        <Container>
+          <div className="grid gap-4 md:grid-cols-4">
+            {trust.map((item) => (
+              <div key={item} className="flex items-start gap-3 text-sm leading-relaxed text-black/70">
+                <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-[#8a6a43]" />
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+        </Container>
       </section>
 
-      <section className="px-6 py-24 md:px-12 lg:px-20">
-        <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
-          <SectionIntro
-            eyebrow="философия"
-            title="Баня, хамам и сауна не должны жить отдельно"
-            text="Премиальный объект ощущается дорогим не из-за одной красивой картинки, а из-за цельности: как человек входит, прогревается, охлаждается, отдыхает, видит свет, слышит тишину и пользуется пространством без лишних действий."
-          />
-
-          <div className="relative min-h-[520px] overflow-hidden rounded-[42px] bg-black shadow-2xl">
-            <Image
-              src="/images/hero/hero-secondary.jpg"
-              alt="Атмосфера банного комплекса ARCHIPAR"
-              fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover"
+      <section className="py-20 md:py-24">
+        <Container>
+          <div className="grid gap-9 lg:grid-cols-[0.92fr_1.08fr] lg:items-end">
+            <SectionIntro
+              eyebrow="философия"
+              title="Баня, хамам и сауна не должны жить отдельно"
+              text="Премиальный объект ощущается дорогим не из-за одной красивой картинки, а из-за цельности: как человек входит, прогревается, охлаждается, отдыхает, видит свет и пользуется пространством без лишних действий."
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/12 to-transparent" />
-            <div className="absolute bottom-0 max-w-xl p-8 text-white md:p-10">
-              <p className="mb-4 text-xs uppercase tracking-[0.3em] text-white/55">
-                не отделка, а опыт
-              </p>
-              <p className="text-3xl font-light leading-tight tracking-[-0.04em] md:text-5xl">
-                Свет, пар, вода, дерево и инженерия собираются в один ритуал.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <section id="complexes" className="px-6 pb-24 md:px-12 lg:px-20">
-        <SectionIntro
-          eyebrow="форматы комплексов"
-          title="Подбираем не типовую баню, а формат под объект и сценарий жизни"
-          text="Для частного дома, отдельного строения, резиденции или коммерческого SPA важны разные маршруты, нагрузки, инженерные решения и визуальная подача."
-        />
-
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {complexes.map((item, index) => (
-            <ImageCard key={item.title} {...item} index={index} />
-          ))}
-        </div>
-      </section>
-
-      <section id="modules" className="bg-[#e9dfd1] px-6 py-24 md:px-12 lg:px-20">
-        <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr]">
-          <SectionIntro
-            eyebrow="модули комплекса"
-            title="Каждый элемент работает на общий сценарий отдыха"
-            text="Парная, хамам, сауна, зона отдыха, купель и инженерия не собираются случайно. Они проектируются как связанные части одного премиального пространства."
-          />
-
-          <div className="grid gap-5 md:grid-cols-2">
-            {modules.map((item) => {
-              const Icon = item.icon;
-
-              return (
-                <Link
-                  href={item.href}
-                  key={item.title}
-                  className="group overflow-hidden rounded-[30px] bg-[#f7f2e9] shadow-sm transition duration-500 hover:-translate-y-1 hover:shadow-2xl"
-                >
-                  <div className="relative h-60 overflow-hidden">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      sizes="(min-width: 768px) 50vw, 100vw"
-                      className="object-cover transition duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-black/18" />
-                  </div>
-
-                  <div className="p-7">
-                    <div className="mb-5 flex items-center justify-between">
-                      <Icon className="h-6 w-6 text-[#8a6a43]" />
-                      <ArrowUpRight className="h-5 w-5 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
-                    </div>
-
-                    <h3 className="text-4xl leading-none tracking-[-0.04em]">
-                      {item.title}
-                    </h3>
-
-                    <p className="mt-5 text-sm leading-relaxed text-black/62">
-                      {item.text}
-                    </p>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section id="engineering" className="relative overflow-hidden bg-[#151515] px-6 py-24 text-white md:px-12 lg:px-20">
-        <div className="absolute -right-24 top-0 h-[520px] w-[520px] rounded-full bg-[#8a6a43]/20 blur-3xl" />
-
-        <div className="relative z-10 grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div>
-            <p className="mb-5 text-xs uppercase tracking-[0.35em] text-white/45">
-              инженерия и климат
-            </p>
-
-            <h2 className="max-w-3xl text-5xl font-light leading-[0.95] tracking-[-0.055em] md:text-7xl">
-              Стабильный климат — скрытая роскошь банного комплекса
-            </h2>
-
-            <p className="mt-7 max-w-xl text-lg leading-relaxed text-white/62">
-              Визуальная часть важна, но объект становится премиальным только
-              тогда, когда он предсказуемо греется, проветривается, держит
-              влажность, безопасен и удобен в обслуживании.
-            </p>
-          </div>
-
-          <div className="grid gap-5">
-            <div className="relative min-h-[340px] overflow-hidden rounded-[36px] bg-black">
+            <div className="parallax-card relative min-h-[420px] overflow-hidden rounded-[36px] bg-black shadow-2xl md:min-h-[500px]">
               <Image
-                src="/images/modules/engineering.jpg"
-                alt="Инженерия банного комплекса"
+                src="/images/hero/hero-secondary.jpg"
+                alt="Атмосфера банного комплекса ARCHIPAR"
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover opacity-82"
+                className="image-drift object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-              <div className="absolute bottom-0 p-8">
-                <p className="max-w-xl text-3xl font-light leading-tight tracking-[-0.04em]">
-                  Вентиляция, влажность, электрика, вода и автоматика заранее
-                  закладываются в архитектуру.
+              <div className="absolute inset-0 bg-gradient-to-t from-black/72 via-black/12 to-transparent" />
+              <div className="absolute bottom-0 max-w-xl p-7 text-white md:p-9">
+                <p className="mb-4 text-xs uppercase tracking-[0.3em] text-white/55">
+                  не отделка, а опыт
+                </p>
+                <p className="text-3xl font-light leading-tight tracking-[-0.04em] md:text-5xl">
+                  Свет, пар, вода, дерево и инженерия собираются в один ритуал.
                 </p>
               </div>
             </div>
+          </div>
+        </Container>
+      </section>
 
-            <div className="grid gap-3 md:grid-cols-2">
-              {engineering.map((item) => (
-                <div key={item} className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5 text-sm leading-relaxed text-white/72">
-                  {item}
-                </div>
-              ))}
+      <section id="complexes" className="pb-20 md:pb-24">
+        <Container>
+          <SectionIntro
+            eyebrow="форматы комплексов"
+            title="Подбираем не типовую баню, а формат под объект и сценарий жизни"
+            text="Для частного дома, отдельного строения, резиденции или коммерческого SPA важны разные маршруты, нагрузки, инженерные решения и визуальная подача."
+          />
+
+          <div className="mt-10 grid gap-5 lg:grid-cols-3">
+            {complexes.map((item, index) => (
+              <ImageCard key={item.title} {...item} index={index} />
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section id="modules" className="bg-[#e9dfd1] py-20 md:py-24">
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-[0.76fr_1.24fr]">
+            <SectionIntro
+              eyebrow="модули комплекса"
+              title="Каждый элемент работает на общий сценарий отдыха"
+              text="Парная, хамам, сауна, зона отдыха, купель и инженерия не собираются случайно. Они проектируются как связанные части одного премиального пространства."
+            />
+
+            <div className="grid gap-5 md:grid-cols-2">
+              {modules.map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <Link
+                    href={item.href}
+                    key={item.title}
+                    className="parallax-card group overflow-hidden rounded-[28px] bg-[#f7f2e9] shadow-sm transition duration-500 hover:shadow-2xl"
+                  >
+                    <div className="relative h-56 overflow-hidden">
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        fill
+                        sizes="(min-width: 768px) 50vw, 100vw"
+                        className="object-cover transition duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-black/18" />
+                    </div>
+
+                    <div className="p-7">
+                      <div className="mb-5 flex items-center justify-between">
+                        <Icon className="h-6 w-6 text-[#8a6a43]" />
+                        <ArrowUpRight className="h-5 w-5 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
+                      </div>
+
+                      <h3 className="text-3xl leading-none tracking-[-0.04em] md:text-4xl">
+                        {item.title}
+                      </h3>
+
+                      <p className="mt-5 text-sm leading-relaxed text-black/62">
+                        {item.text}
+                      </p>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
-      <section id="process" className="px-6 py-24 md:px-12 lg:px-20">
-        <SectionIntro
-          eyebrow="процесс"
-          title="От идеи и планировки до запуска комплекса"
-          text="Премиальный уровень держится на последовательности: сначала сценарий отдыха, затем архитектура, инженерия, реализация и настройка объекта."
-        />
+      <section id="engineering" className="relative overflow-hidden bg-[#151515] py-20 text-white md:py-24">
+        <div className="absolute -right-24 top-0 h-[520px] w-[520px] rounded-full bg-[#8a6a43]/20 blur-3xl" />
 
-        <div className="mt-12 grid gap-4">
-          {process.map((item, index) => {
-            const Icon = item.icon;
+        <Container>
+          <div className="relative z-10 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <div>
+              <p className="mb-5 text-xs uppercase tracking-[0.35em] text-white/45">
+                инженерия и климат
+              </p>
 
-            return (
-              <div key={item.title} className="group grid gap-5 border-t border-black/10 py-7 transition md:grid-cols-[120px_1fr_320px] md:items-start">
-                <span className="font-mono text-sm text-black/35">0{index + 1}</span>
-                <h3 className="text-4xl leading-none tracking-[-0.045em] md:text-5xl">
-                  {item.title}
-                </h3>
-                <div className="flex gap-4 text-black/62">
-                  <Icon className="mt-1 h-5 w-5 shrink-0 text-[#8a6a43]" />
-                  <p className="text-sm leading-relaxed">{item.text}</p>
+              <h2 className="max-w-3xl text-4xl font-light leading-[0.98] tracking-[-0.052em] md:text-6xl">
+                Стабильный климат — скрытая роскошь банного комплекса
+              </h2>
+
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-white/62 md:text-lg">
+                Визуальная часть важна, но объект становится премиальным только
+                тогда, когда он предсказуемо греется, проветривается, держит
+                влажность, безопасен и удобен в обслуживании.
+              </p>
+            </div>
+
+            <div className="grid gap-5">
+              <div className="parallax-card relative min-h-[320px] overflow-hidden rounded-[34px] bg-black md:min-h-[360px]">
+                <Image
+                  src="/images/modules/engineering.jpg"
+                  alt="Инженерия банного комплекса"
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="image-drift object-cover opacity-[0.82]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/72 to-transparent" />
+                <div className="absolute bottom-0 p-7 md:p-8">
+                  <p className="max-w-xl text-2xl font-light leading-tight tracking-[-0.04em] md:text-3xl">
+                    Вентиляция, влажность, электрика, вода и автоматика заранее
+                    закладываются в архитектуру.
+                  </p>
                 </div>
               </div>
-            );
-          })}
-        </div>
+
+              <div className="grid gap-3 md:grid-cols-2">
+                {engineering.map((item) => (
+                  <div key={item} className="rounded-[22px] border border-white/10 bg-white/[0.04] p-5 text-sm leading-relaxed text-white/72">
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Container>
       </section>
 
-      <section id="cases" className="bg-[#efe7dc] px-6 py-24 md:px-12 lg:px-20">
-        <SectionIntro
-          eyebrow="кейсы и визуальный ряд"
-          title="Объекты, где архитектура и банная культура становятся одним опытом"
-          text="Блок можно использовать как портфолио: реальные проекты, концепты, детали материалов, инженерные решения и будущие видеоотзывы."
-        />
+      <section id="process" className="py-20 md:py-24">
+        <Container>
+          <SectionIntro
+            eyebrow="процесс"
+            title="От идеи и планировки до запуска комплекса"
+            text="Премиальный уровень держится на последовательности: сначала сценарий отдыха, затем архитектура, инженерия, реализация и настройка объекта."
+          />
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {cases.map((item, index) => (
-            <Link key={item.title} href="#request" className={index === 0 ? "group block overflow-hidden rounded-[34px] bg-black md:col-span-2 lg:col-span-2" : "group block overflow-hidden rounded-[34px] bg-black"}>
-              <div className={index === 0 ? "relative h-[520px] overflow-hidden" : "relative h-[360px] overflow-hidden"}>
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  sizes={index === 0 ? "(min-width: 1024px) 66vw, 100vw" : "(min-width: 1024px) 33vw, 100vw"}
-                  className="object-cover transition duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/74 via-black/18 to-transparent" />
+          <div className="mt-10 grid gap-3">
+            {process.map((item, index) => {
+              const Icon = item.icon;
 
-                <div className="absolute bottom-0 p-7 text-white md:p-9">
-                  <p className="mb-3 text-xs uppercase tracking-[0.25em] text-white/62">
-                    {item.type}
-                  </p>
-                  <h3 className={index === 0 ? "max-w-3xl text-5xl font-light leading-[0.94] tracking-[-0.055em] md:text-7xl" : "text-4xl font-light leading-[0.95] tracking-[-0.04em]"}>
+              return (
+                <div key={item.title} className="group grid gap-5 border-t border-black/10 py-6 transition md:grid-cols-[90px_1fr_300px] md:items-start">
+                  <span className="font-mono text-sm text-black/35">0{index + 1}</span>
+                  <h3 className="text-3xl leading-none tracking-[-0.045em] md:text-5xl">
                     {item.title}
                   </h3>
+                  <div className="flex gap-4 text-black/62">
+                    <Icon className="mt-1 h-5 w-5 shrink-0 text-[#8a6a43]" />
+                    <p className="text-sm leading-relaxed">{item.text}</p>
+                  </div>
                 </div>
+              );
+            })}
+          </div>
+        </Container>
+      </section>
+
+      <section id="cases" className="bg-[#efe7dc] py-20 md:py-24">
+        <Container>
+          <SectionIntro
+            eyebrow="кейсы и визуальный ряд"
+            title="Объекты, где архитектура и банная культура становятся одним опытом"
+            text="Блок можно использовать как портфолио: реальные проекты, концепты, детали материалов, инженерные решения и будущие видеоотзывы."
+          />
+
+          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {cases.map((item, index) => (
+              <Link key={item.title} href="#request" className={index === 0 ? "parallax-card group block overflow-hidden rounded-[34px] bg-black md:col-span-2 lg:col-span-2" : "parallax-card group block overflow-hidden rounded-[34px] bg-black"}>
+                <div className={index === 0 ? "relative h-[470px] overflow-hidden" : "relative h-[330px] overflow-hidden"}>
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    sizes={index === 0 ? "(min-width: 1024px) 66vw, 100vw" : "(min-width: 1024px) 33vw, 100vw"}
+                    className="object-cover transition duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/74 via-black/18 to-transparent" />
+
+                  <div className="absolute bottom-0 p-7 text-white md:p-8">
+                    <p className="mb-3 text-xs uppercase tracking-[0.25em] text-white/62">
+                      {item.type}
+                    </p>
+                    <h3 className={index === 0 ? "max-w-3xl text-4xl font-light leading-[0.96] tracking-[-0.055em] md:text-6xl" : "text-3xl font-light leading-[0.96] tracking-[-0.04em] md:text-4xl"}>
+                      {item.title}
+                    </h3>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-20 md:py-24">
+        <Container>
+          <div className="grid gap-8 lg:grid-cols-[1fr_0.88fr] lg:items-center">
+            <div className="parallax-card relative min-h-[520px] overflow-hidden rounded-[40px] bg-black md:min-h-[580px]">
+              <Image
+                src="/images/team/team-main.jpg"
+                alt="Команда ARCHIPAR за работой"
+                fill
+                sizes="(min-width: 1024px) 55vw, 100vw"
+                className="image-drift object-cover opacity-[0.92]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/72 via-black/12 to-transparent" />
+              <div className="absolute bottom-0 max-w-2xl p-7 text-white md:p-9">
+                <p className="mb-4 text-xs uppercase tracking-[0.35em] text-white/55">
+                  команда и контроль
+                </p>
+                <h2 className="text-4xl font-light leading-[0.98] tracking-[-0.052em] md:text-6xl">
+                  Премиальный объект требует не только дизайна, но и контроля деталей
+                </h2>
+              </div>
+            </div>
+
+            <div className="rounded-[34px] bg-[#111] p-7 text-white shadow-2xl md:p-9">
+              <Sparkles className="h-7 w-7 text-[#c8aa78]" />
+              <h3 className="mt-7 text-3xl font-light leading-tight tracking-[-0.04em] md:text-5xl">
+                ARCHIPAR ведет проект как единую систему, а не как набор отдельных подрядчиков.
+              </h3>
+              <p className="mt-6 text-base leading-relaxed text-white/62 md:text-lg">
+                Это снижает риск конфликтов между красивой картинкой и инженерной
+                реальностью: вентиляция не спорит с отделкой, свет не мешает
+                обслуживанию, влажные зоны не конфликтуют с материалами.
+              </p>
+              <Link href="#request" className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#f7f2e9] px-7 py-4 text-sm font-semibold text-black shadow-xl transition hover:bg-[#c8aa78] hover:text-black">
+                Получить консультацию
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <section id="video" className="bg-[#e9dfd1] py-20 md:py-24">
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
+            <div>
+              <p className="mb-5 text-xs uppercase tracking-[0.35em] text-black/45">
+                видео
+              </p>
+              <h2 className="text-4xl font-light leading-[0.98] tracking-[-0.052em] md:text-6xl">
+                Видеообъекты, проходки и отзывы владельцев
+              </h2>
+
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-black/62 md:text-lg">
+                Для дорогого продукта важно показать не только фото, но и ощущение:
+                движение пара, свет, масштаб, звук воды и реальные впечатления
+                владельцев.
+              </p>
+            </div>
+
+            <Link href="#request" className="parallax-card group relative min-h-[420px] overflow-hidden rounded-[36px] bg-black">
+              <Image
+                src="/images/video/video-preview.jpg"
+                alt="Видео банного комплекса ARCHIPAR"
+                fill
+                sizes="(min-width: 1024px) 60vw, 100vw"
+                className="object-cover transition duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-black/30" />
+
+              <div className="absolute left-1/2 top-1/2 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-black shadow-2xl transition group-hover:scale-105 md:h-24 md:w-24">
+                <Play className="ml-1 h-8 w-8 fill-black" />
               </div>
             </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="px-6 py-24 md:px-12 lg:px-20">
-        <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-center">
-          <div className="relative min-h-[600px] overflow-hidden rounded-[44px] bg-black">
-            <Image
-              src="/images/team/team-main.jpg"
-              alt="Команда ARCHIPAR за работой"
-              fill
-              sizes="(min-width: 1024px) 55vw, 100vw"
-              className="object-cover opacity-92"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/12 to-transparent" />
-            <div className="absolute bottom-0 max-w-2xl p-8 text-white md:p-10">
-              <p className="mb-4 text-xs uppercase tracking-[0.35em] text-white/55">
-                команда и контроль
-              </p>
-              <h2 className="text-5xl font-light leading-[0.95] tracking-[-0.055em] md:text-7xl">
-                Премиальный объект требует не только дизайна, но и контроля деталей
-              </h2>
-            </div>
           </div>
+        </Container>
+      </section>
 
-          <div className="rounded-[38px] bg-[#111] p-8 text-white md:p-10">
-            <Sparkles className="h-7 w-7 text-[#c8aa78]" />
-            <h3 className="mt-8 text-4xl font-light leading-tight tracking-[-0.04em] md:text-5xl">
-              ARCHIPAR ведет проект как единую систему, а не как набор отдельных подрядчиков.
-            </h3>
-            <p className="mt-7 text-lg leading-relaxed text-white/62">
-              Это снижает риск конфликтов между красивой картинкой и инженерной
-              реальностью: вентиляция не спорит с отделкой, свет не мешает
-              обслуживанию, влажные зоны не конфликтуют с материалами.
-            </p>
-            <Link href="#request" className="mt-9 inline-flex items-center gap-2 rounded-full bg-white px-7 py-4 text-sm font-semibold text-black transition hover:bg-[#e5d8c4]">
-              Получить консультацию
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+      <section id="reviews" className="py-20 md:py-24">
+        <Container>
+          <SectionIntro
+            eyebrow="доверие"
+            title="Премиальный проект выбирают не по цене, а по уверенности"
+            text="Пока нет реальных отзывов, этот блок лучше держать как заготовку под будущие цитаты, видео и ссылки на реализованные объекты."
+          />
+
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {[
+              "Сначала показываем сценарий жизни в комплексе, потом материалы и инженерные решения.",
+              "Убираем ощущение обычной бани: сайт продает wellness-пространство премиального уровня.",
+              "Ведем клиента к заявке через доверие, визуальный масштаб и понятный процесс работы.",
+            ].map((review, index) => (
+              <div key={review} className="parallax-card rounded-[28px] bg-[#efe7dc] p-7 text-black/70">
+                <p className="text-base leading-relaxed md:text-lg">«{review}»</p>
+                <p className="mt-8 text-sm text-black/40">Блок {index + 1}</p>
+              </div>
+            ))}
           </div>
-        </div>
+        </Container>
       </section>
 
-      <section id="video" className="bg-[#e9dfd1] px-6 py-24 md:px-12 lg:px-20">
-        <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
-          <div>
-            <p className="mb-5 text-xs uppercase tracking-[0.35em] text-black/45">
-              видео
-            </p>
-            <h2 className="text-5xl font-light leading-[0.95] tracking-[-0.055em] md:text-7xl">
-              Видеообъекты, проходки и отзывы владельцев
-            </h2>
-
-            <p className="mt-7 max-w-xl text-lg leading-relaxed text-black/62">
-              Для дорогого продукта важно показать не только фото, но и ощущение:
-              движение пара, свет, масштаб, звук воды и реальные впечатления
-              владельцев.
-            </p>
-          </div>
-
-          <Link href="#request" className="group relative min-h-[460px] overflow-hidden rounded-[38px] bg-black">
-            <Image
-              src="/images/video/video-preview.jpg"
-              alt="Видео банного комплекса ARCHIPAR"
-              fill
-              sizes="(min-width: 1024px) 60vw, 100vw"
-              className="object-cover transition duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-black/30" />
-
-            <div className="absolute left-1/2 top-1/2 flex h-24 w-24 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-black transition group-hover:scale-105">
-              <Play className="ml-1 h-8 w-8 fill-black" />
-            </div>
-          </Link>
-        </div>
-      </section>
-
-      <section id="reviews" className="px-6 py-24 md:px-12 lg:px-20">
-        <SectionIntro
-          eyebrow="доверие"
-          title="Премиальный проект выбирают не по цене, а по уверенности"
-          text="Пока нет реальных отзывов, этот блок лучше держать как заготовку под будущие цитаты, видео и ссылки на реализованные объекты."
-        />
-
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {[
-            "Сначала показываем сценарий жизни в комплексе, потом материалы и инженерные решения.",
-            "Убираем ощущение обычной бани: сайт продает wellness-пространство премиального уровня.",
-            "Ведем клиента к заявке через доверие, визуальный масштаб и понятный процесс работы.",
-          ].map((review, index) => (
-            <div key={review} className="rounded-[30px] bg-[#efe7dc] p-8 text-black/70">
-              <p className="text-lg leading-relaxed">«{review}»</p>
-              <p className="mt-8 text-sm text-black/40">Блок {index + 1}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="request" className="relative overflow-hidden bg-[#151515] px-6 py-24 text-white md:px-12 lg:px-20">
+      <section id="request" className="relative overflow-hidden bg-[#151515] py-20 text-white md:py-24">
         <div className="absolute right-0 top-0 h-[560px] w-[560px] rounded-full bg-[#8a6a43]/20 blur-3xl" />
         <div className="absolute bottom-0 left-0 h-[420px] w-[420px] rounded-full bg-white/5 blur-3xl" />
 
-        <div className="relative z-10 grid gap-10 lg:grid-cols-2 lg:items-start">
-          <div>
-            <p className="mb-5 text-xs uppercase tracking-[0.35em] text-white/45">
-              заявка
-            </p>
+        <Container>
+          <div className="relative z-10 grid gap-10 lg:grid-cols-2 lg:items-start">
+            <div>
+              <p className="mb-5 text-xs uppercase tracking-[0.35em] text-white/45">
+                заявка
+              </p>
 
-            <h2 className="text-5xl font-light leading-[0.95] tracking-[-0.055em] md:text-7xl">
-              Обсудить проект банного комплекса
-            </h2>
+              <h2 className="text-4xl font-light leading-[0.98] tracking-[-0.052em] md:text-6xl">
+                Обсудить проект банного комплекса
+              </h2>
 
-            <p className="mt-7 max-w-xl text-lg leading-relaxed text-white/65">
-              Оставьте контакты — команда ARCHIPAR свяжется с вами, чтобы
-              обсудить формат комплекса, объект, задачи, бюджетный коридор и
-              возможный сценарий реализации.
-            </p>
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-white/65 md:text-lg">
+                Оставьте контакты — команда ARCHIPAR свяжется с вами, чтобы
+                обсудить формат комплекса, объект, задачи, бюджетный коридор и
+                возможный сценарий реализации.
+              </p>
 
-            <div className="mt-10 grid gap-3 text-sm text-white/62">
-              <p>• Частные дома, резиденции и гостевые комплексы</p>
-              <p>• Парные, хамамы, сауны, купели и зоны отдыха</p>
-              <p>• Архитектура, инженерия, комплектация и запуск</p>
+              <div className="mt-9 grid gap-3 text-sm text-white/62">
+                <p>• Частные дома, резиденции и гостевые комплексы</p>
+                <p>• Парные, хамамы, сауны, купели и зоны отдыха</p>
+                <p>• Архитектура, инженерия, комплектация и запуск</p>
+              </div>
             </div>
-          </div>
 
-          <ContactForm />
-        </div>
+            <ContactForm />
+          </div>
+        </Container>
       </section>
 
       <Footer />
     </main>
   );
+}
+
+function Container({ children }: { children: React.ReactNode }) {
+  return <div className="container-premium">{children}</div>;
 }
 
 function SectionIntro({
@@ -602,14 +628,14 @@ function SectionIntro({
   text: string;
 }) {
   return (
-    <div className="max-w-4xl">
+    <div className="max-w-3xl">
       <p className="mb-5 text-xs uppercase tracking-[0.35em] text-black/45">
         {eyebrow}
       </p>
-      <h2 className="text-5xl font-light leading-[0.95] tracking-[-0.055em] md:text-7xl">
+      <h2 className="text-4xl font-light leading-[0.98] tracking-[-0.052em] md:text-6xl">
         {title}
       </h2>
-      <p className="mt-7 max-w-2xl text-lg leading-relaxed text-black/62">
+      <p className="mt-6 max-w-2xl text-base leading-relaxed text-black/62 md:text-lg">
         {text}
       </p>
     </div>
@@ -632,7 +658,7 @@ function ImageCard({
   index: number;
 }) {
   return (
-    <Link href={href} className="group relative min-h-[560px] overflow-hidden rounded-[38px] bg-black shadow-sm transition duration-500 hover:-translate-y-1 hover:shadow-2xl">
+    <Link href={href} className="parallax-card group relative min-h-[500px] overflow-hidden rounded-[34px] bg-black shadow-sm transition duration-500 hover:shadow-2xl">
       <Image
         src={image}
         alt={title}
@@ -642,11 +668,11 @@ function ImageCard({
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/20 to-transparent" />
 
-      <div className="absolute left-7 top-7 rounded-full border border-white/18 bg-white/10 px-4 py-2 text-[11px] uppercase tracking-[0.24em] text-white/72 backdrop-blur">
+      <div className="absolute left-6 top-6 rounded-full border border-white/18 bg-black/24 px-4 py-2 text-[11px] uppercase tracking-[0.22em] text-white/76 backdrop-blur">
         {meta}
       </div>
 
-      <div className="absolute bottom-0 p-8 text-white">
+      <div className="absolute bottom-0 p-7 text-white">
         <div className="mb-5 flex items-center gap-3">
           <span className="font-mono text-sm text-white/45">0{index + 1}</span>
           <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/15 backdrop-blur">
@@ -654,7 +680,7 @@ function ImageCard({
           </span>
         </div>
 
-        <h3 className="text-5xl font-light leading-none tracking-[-0.055em]">
+        <h3 className="text-4xl font-light leading-none tracking-[-0.052em] md:text-5xl">
           {title}
         </h3>
 
@@ -668,33 +694,35 @@ function ImageCard({
 
 function Footer() {
   return (
-    <footer className="bg-[#0f0f0f] px-6 py-12 text-white md:px-12 lg:px-20">
-      <div className="grid gap-10 md:grid-cols-3">
-        <div>
-          <p className="text-lg font-bold tracking-[0.3em]">ARCHIPAR</p>
-          <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/45">
-            Премиальные банные комплексы под ключ: архитектура, инженерия,
-            климат и авторские сценарии отдыха.
-          </p>
-        </div>
+    <footer className="bg-[#0f0f0f] py-12 text-white">
+      <Container>
+        <div className="grid gap-10 md:grid-cols-3">
+          <div>
+            <p className="text-lg font-bold tracking-[0.3em]">ARCHIPAR</p>
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/45">
+              Премиальные банные комплексы под ключ: архитектура, инженерия,
+              климат и авторские сценарии отдыха.
+            </p>
+          </div>
 
-        <div className="grid gap-3 text-sm text-white/60">
-          <Link href="/bath-complexes">Банные комплексы</Link>
-          <Link href="/baths">Бани</Link>
-          <Link href="/saunas">Сауны</Link>
-          <Link href="/hamams">Хамамы</Link>
-          <Link href="/#cases">Кейсы</Link>
-          <Link href="/#request">Контакты</Link>
-        </div>
+          <div className="grid gap-3 text-sm text-white/60">
+            <Link href="/bath-complexes">Банные комплексы</Link>
+            <Link href="/baths">Бани</Link>
+            <Link href="/saunas">Сауны</Link>
+            <Link href="/hamams">Хамамы</Link>
+            <Link href="/#cases">Кейсы</Link>
+            <Link href="/#request">Контакты</Link>
+          </div>
 
-        <div className="text-sm text-white/60">
-          <p>Россия</p>
-          <p className="mt-2">Проектирование и реализация премиальных объектов</p>
-          <Link href="/#request" className="mt-6 inline-flex items-center gap-2 text-white">
-            Обсудить проект <ArrowUpRight className="h-4 w-4" />
-          </Link>
+          <div className="text-sm text-white/60">
+            <p>Россия</p>
+            <p className="mt-2">Проектирование и реализация премиальных объектов</p>
+            <Link href="/#request" className="mt-6 inline-flex items-center gap-2 text-white">
+              Обсудить проект <ArrowUpRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }
