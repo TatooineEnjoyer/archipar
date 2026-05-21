@@ -21,48 +21,38 @@ export default function Header() {
     }
 
     handleScroll();
-
-    window.addEventListener("scroll", handleScroll, {
-      passive: true,
-    });
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const brandOpacity = Math.max(0, 1 - scrollY / 130);
-  const brandTranslate = Math.min(scrollY * 0.22, 34);
-  const brandVisible = scrollY < 135;
+  const compact = scrollY > 40;
 
   return (
-    <header className="fixed left-0 top-0 z-50 w-full px-4 py-4 md:px-8 lg:px-14">
-      <div className="flex items-start justify-between gap-4">
+    <header className="fixed left-0 top-0 z-50 w-full px-4 py-4 md:px-6">
+      <div className="mx-auto flex max-w-[1180px] items-start justify-between gap-4">
         <Link
           href="/"
           aria-label="ARCHIPAR"
-          className="premium-glass flex items-center gap-3 rounded-full border border-black/5 px-4 py-3 transition duration-500"
-          style={{
-            opacity: brandOpacity,
-            transform: brandVisible
-              ? `translateY(-${brandTranslate}px)`
-              : "translateY(-36px)",
-            pointerEvents: brandVisible ? "auto" : "none",
-          }}
+          className={`premium-glass group flex items-center gap-3 rounded-full border border-white/25 px-4 py-3 text-black shadow-xl transition duration-500 md:gap-4 md:px-5 ${
+            compact ? "bg-[#f4f0e8]/88" : "bg-[#f4f0e8]/72"
+          }`}
         >
           <Image
             src="/images/logo/archipar-logo.png"
             alt="ARCHIPAR"
-            width={30}
-            height={30}
-            className="h-7 w-7 object-contain md:h-8 md:w-8"
+            width={44}
+            height={44}
+            priority
+            className="h-9 w-9 object-contain transition duration-500 group-hover:scale-105 md:h-11 md:w-11"
           />
-
-          <span className="hidden text-xs font-medium uppercase tracking-[0.32em] text-black/82 sm:block">
+          <span className="hidden text-sm font-semibold uppercase tracking-[0.28em] text-black/86 sm:block md:text-[15px]">
             ARCHIPAR
           </span>
         </Link>
 
         <div className="flex items-center gap-2">
-          <nav className="premium-glass hidden items-center gap-1 rounded-full border border-black/5 px-2 py-2 text-[11px] font-medium uppercase tracking-[0.16em] text-black/72 md:flex">
+          <nav className="premium-glass hidden items-center gap-1 rounded-full border border-white/25 bg-[#f4f0e8]/82 px-2 py-2 text-[12px] font-semibold uppercase tracking-[0.13em] text-black/74 shadow-xl md:flex">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -75,23 +65,22 @@ export default function Header() {
 
             <Link
               href="/#request"
-              className="rounded-full bg-black px-5 py-3 text-white transition hover:bg-[#8a6a43]"
+              className="rounded-full bg-[#111] px-5 py-3 text-white shadow-lg shadow-black/10 transition hover:bg-[#8a6a43] hover:text-white"
             >
               Заявка
             </Link>
           </nav>
 
-          <nav className="premium-glass flex items-center gap-1 rounded-full border border-black/5 px-2 py-2 text-[10px] font-medium uppercase tracking-[0.12em] text-black/72 md:hidden">
+          <nav className="premium-glass flex items-center gap-1 rounded-full border border-white/25 bg-[#f4f0e8]/86 px-2 py-2 text-[11px] font-semibold uppercase tracking-[0.1em] text-black/76 shadow-xl md:hidden">
             <Link
               href="/bath-complexes"
               className="rounded-full px-3 py-3 transition hover:bg-black hover:text-white"
             >
               Комплексы
             </Link>
-
             <Link
               href="/#request"
-              className="rounded-full bg-black px-3 py-3 text-white"
+              className="rounded-full bg-[#111] px-3 py-3 text-white transition hover:bg-[#8a6a43] hover:text-white"
             >
               Заявка
             </Link>
