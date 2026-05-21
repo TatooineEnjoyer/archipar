@@ -103,7 +103,7 @@ const cases = [
   {
     title: "Хамам как часть wellness-зоны",
     type: "Комплекс в доме",
-    image: "/images/cases/case-02.jpg",
+    image: "/images/modules/hamam.jpg",
   },
   {
     title: "Парная с авторскими сценариями климата",
@@ -215,10 +215,10 @@ export default function Home() {
 
                   <Link
                     href="#complexes"
-                    className="inline-flex items-center justify-center gap-2 rounded-full border border-white/35 bg-white/12 px-7 py-4 text-sm font-semibold text-white backdrop-blur transition hover:bg-white hover:text-black"
+                    className="inline-flex items-center justify-center gap-2 rounded-full border border-white/28 bg-black/42 px-7 py-4 text-sm font-semibold text-white shadow-xl shadow-black/20 backdrop-blur-md transition duration-300 hover:bg-[#8a6a43] hover:text-white"
                   >
                     Смотреть решения
-                    <ArrowUpRight className="inline-flex items-center justify-center rounded-full border border-white/22 bg-black/28 px-7 py-4 text-sm font-semibold text-white backdrop-blur-md transition duration-300 hover:bg-[#8a6a43] hover:text-white" />
+                    <ArrowUpRight className="h-4 w-4" />
                   </Link>
                 </div>
               </div>
@@ -305,52 +305,62 @@ export default function Home() {
 
       <section id="modules" className="bg-[#e9dfd1] py-20 md:py-24">
         <Container>
-          <div className="grid gap-10 lg:grid-cols-[0.76fr_1.24fr]">
+          <div className="grid gap-7 lg:grid-cols-[0.92fr_1fr] lg:items-end">
             <SectionIntro
               eyebrow="модули комплекса"
               title="Каждый элемент работает на общий сценарий отдыха"
               text="Парная, хамам, сауна, зона отдыха, купель и инженерия не собираются случайно. Они проектируются как связанные части одного премиального пространства."
             />
 
-            <div className="grid gap-5 md:grid-cols-2">
-              {modules.map((item) => {
-                const Icon = item.icon;
+            <p className="max-w-xl text-base leading-relaxed text-black/55 md:justify-self-end md:text-lg">
+              Вместо пустого пространства показываем сразу весь состав комплекса:
+              от горячих зон до охлаждения и инженерии, чтобы визуально было
+              понятно, из чего собирается премиальный сценарий отдыха.
+            </p>
+          </div>
 
-                return (
-                  <Link
-                    href={item.href}
-                    key={item.title}
-                    className="parallax-card group overflow-hidden rounded-[28px] bg-[#f7f2e9] shadow-sm transition duration-500 hover:shadow-2xl"
-                  >
-                    <div className="relative h-56 overflow-hidden">
-                      <Image
-                        src={item.image}
-                        alt={item.title}
-                        fill
-                        sizes="(min-width: 768px) 50vw, 100vw"
-                        className="object-cover transition duration-700 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-black/18" />
+          <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+            {modules.map((item, index) => {
+              const Icon = item.icon;
+
+              return (
+                <Link
+                  href={item.href}
+                  key={item.title}
+                  className={
+                    index === 0
+                      ? "parallax-card group overflow-hidden rounded-[30px] bg-[#f7f2e9] shadow-sm transition duration-500 hover:shadow-2xl md:col-span-2 xl:col-span-1"
+                      : "parallax-card group overflow-hidden rounded-[30px] bg-[#f7f2e9] shadow-sm transition duration-500 hover:shadow-2xl"
+                  }
+                >
+                  <div className={index === 0 ? "relative h-64 overflow-hidden xl:h-60" : "relative h-60 overflow-hidden"}>
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+                      className="object-cover transition duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/28 via-black/8 to-transparent" />
+                  </div>
+
+                  <div className="p-7">
+                    <div className="mb-5 flex items-center justify-between">
+                      <Icon className="h-6 w-6 text-[#8a6a43]" />
+                      <ArrowUpRight className="h-5 w-5 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
                     </div>
 
-                    <div className="p-7">
-                      <div className="mb-5 flex items-center justify-between">
-                        <Icon className="h-6 w-6 text-[#8a6a43]" />
-                        <ArrowUpRight className="h-5 w-5 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
-                      </div>
+                    <h3 className="text-3xl leading-none tracking-[-0.04em] md:text-4xl">
+                      {item.title}
+                    </h3>
 
-                      <h3 className="text-3xl leading-none tracking-[-0.04em] md:text-4xl">
-                        {item.title}
-                      </h3>
-
-                      <p className="mt-5 text-sm leading-relaxed text-black/62">
-                        {item.text}
-                      </p>
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
+                    <p className="mt-5 text-sm leading-relaxed text-black/62">
+                      {item.text}
+                    </p>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </Container>
       </section>
@@ -419,14 +429,14 @@ export default function Home() {
               const Icon = item.icon;
 
               return (
-                <div key={item.title} className="group grid gap-5 border-t border-black/10 py-6 transition md:grid-cols-[90px_1fr_300px] md:items-start">
+                <div key={item.title} className="group grid gap-5 border-t border-black/10 py-6 transition md:grid-cols-[72px_minmax(0,0.95fr)_minmax(330px,0.7fr)] md:items-start">
                   <span className="font-mono text-sm text-black/35">0{index + 1}</span>
-                  <h3 className="text-3xl leading-none tracking-[-0.045em] md:text-5xl">
+                  <h3 className="max-w-3xl text-3xl leading-[1.02] tracking-[-0.045em] md:text-4xl lg:text-[44px]">
                     {item.title}
                   </h3>
-                  <div className="flex gap-4 text-black/62">
+                  <div className="flex gap-4 text-black/68">
                     <Icon className="mt-1 h-5 w-5 shrink-0 text-[#8a6a43]" />
-                    <p className="text-sm leading-relaxed">{item.text}</p>
+                    <p className="text-base leading-relaxed md:text-[15px] lg:text-base">{item.text}</p>
                   </div>
                 </div>
               );
@@ -503,9 +513,9 @@ export default function Home() {
                 реальностью: вентиляция не спорит с отделкой, свет не мешает
                 обслуживанию, влажные зоны не конфликтуют с материалами.
               </p>
-              <Link href="#request" className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#f7f2e9] px-7 py-4 text-sm font-semibold text-black shadow-xl transition hover:bg-[#c8aa78] hover:text-black">
+              <Link href="#request" className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#8a6a43] px-7 py-4 text-sm font-semibold text-white shadow-[0_18px_50px_rgba(138,106,67,0.32)] transition duration-300 hover:bg-[#b8935f] hover:text-white">
                 Получить консультацию
-                <ArrowRight className="inline-flex items-center justify-center rounded-full bg-[#8a6a43] px-7 py-4 text-sm font-semibold text-white shadow-[0_18px_50px_rgba(138,106,67,0.28)] transition duration-300 hover:bg-[#b8935f] hover:text-white" />
+                <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </div>
