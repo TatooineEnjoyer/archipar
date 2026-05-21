@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import ContactForm from "@/components/ContactForm";
 import Image from "next/image";
 import Link from "next/link";
