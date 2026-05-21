@@ -218,7 +218,7 @@ export default function Home() {
                     className="inline-flex items-center justify-center gap-2 rounded-full border border-white/35 bg-white/12 px-7 py-4 text-sm font-semibold text-white backdrop-blur transition hover:bg-white hover:text-black"
                   >
                     Смотреть решения
-                    <ArrowUpRight className="h-4 w-4" />
+                    <ArrowUpRight className="inline-flex items-center justify-center rounded-full border border-white/22 bg-black/28 px-7 py-4 text-sm font-semibold text-white backdrop-blur-md transition duration-300 hover:bg-[#8a6a43] hover:text-white" />
                   </Link>
                 </div>
               </div>
@@ -505,7 +505,7 @@ export default function Home() {
               </p>
               <Link href="#request" className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#f7f2e9] px-7 py-4 text-sm font-semibold text-black shadow-xl transition hover:bg-[#c8aa78] hover:text-black">
                 Получить консультацию
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="inline-flex items-center justify-center rounded-full bg-[#8a6a43] px-7 py-4 text-sm font-semibold text-white shadow-[0_18px_50px_rgba(138,106,67,0.28)] transition duration-300 hover:bg-[#b8935f] hover:text-white" />
               </Link>
             </div>
           </div>
