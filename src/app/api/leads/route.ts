@@ -1,17 +1,23 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-if (!supabaseUrl || !supabaseServiceRoleKey) {
-  throw new Error("Missing Supabase environment variables");
-}
-
-const supabase = createClient(supabaseUrl, supabaseServiceRoleKey);
-
 export async function POST(request: Request) {
   try {
+    const supabaseUrl = process.env.SUPABASE_URL;
+    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+    if (!supabaseUrl || !supabaseKey) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "ENV не найдены",
+          hasUrl: Boolean(supabaseUrl),
+          hasKey: Boolean(supabaseKey),
+        },
+        { status: 500 }
+      );
+    }
+
     const body = await request.json();
 
     const name = String(body.name || "").trim();
@@ -27,29 +33,43 @@ export async function POST(request: Request) {
       );
     }
 
-    const { error } = await supabase.from("leads").insert({
-      name,
-      phone,
-      email,
-      interest,
-      message,
-      source: "archipar.ru",
-    });
+    const supabase = createClient(supabaseUrl, supabaseKey);
+
+    const { data, error } = await supabase
+      .from("leads")
+      .insert({
+        name,
+        phone,
+        email,
+        interest,
+        message,
+        source: "archipar.ru",
+      })
+      .select();
 
     if (error) {
       return NextResponse.json(
-        { success: false, message: "Ошибка сохранения заявки" },
+        {
+          success: false,
+          message: "Supabase insert error",
+          error,
+        },
         { status: 500 }
       );
     }
 
     return NextResponse.json({
       success: true,
-      message: "Заявка успешно отправлена",
+      message: "Заявка сохранена",
+      data,
     });
-  } catch {
+  } catch (error) {
     return NextResponse.json(
-      { success: false, message: "Ошибка сервера" },
+      {
+        success: false,
+        message: "Server error",
+        error: error instanceof Error ? error.message : String(error),
+      },
       { status: 500 }
     );
   }
