@@ -17,6 +17,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body), Arial, sans-serif;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -24,9 +25,11 @@ body {
 h1,
 h2,
 h3,
-h4 {
-  font-family: var(--font-display), serif;
-  font-weight: 400;
+h4,
+h5,
+h6 {
+  font-family: var(--font-display), Arial, sans-serif;
+  font-weight: 300;
 }
 
 a {
@@ -38,12 +41,9 @@ a {
   background: rgba(138, 106, 67, 0.24);
 }
 
-.premium-blur {
-  background: rgba(244, 240, 232, 0.72);
+.premium-glass {
+  background: rgba(244, 240, 232, 0.76);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-}
-
-.soft-card-shadow {
-  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.1);
 }
