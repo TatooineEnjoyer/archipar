@@ -179,7 +179,7 @@ export default function Home() {
           className="image-drift object-cover opacity-90"
         />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_66%_18%,rgba(255,255,255,0.16),transparent_30%),linear-gradient(90deg,rgba(0,0,0,0.76),rgba(0,0,0,0.35),rgba(0,0,0,0.16))]" />
-        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/78 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/58 via-black/12 to-transparent opacity-90 transition duration-500 group-hover:opacity-100" />
 
         <div className="container-premium relative z-10 flex min-h-screen items-end pb-10 pt-32 md:pb-14">
           <div className="w-full">
