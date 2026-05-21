@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import ContactForm from "@/components/ContactForm";
-import type { ProductPageData } from "@/data/product";
+import type { ProductPageData } from "@/data/products";
 
 export default function ProductPage({ product }: { product: ProductPageData }) {
   return (
