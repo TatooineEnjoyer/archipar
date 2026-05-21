@@ -10,9 +10,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           success: false,
-          message: "ENV не найдены",
-          hasUrl: Boolean(supabaseUrl),
-          hasKey: Boolean(supabaseKey),
+          message: "Не настроены переменные Supabase на сервере",
         },
         { status: 500 }
       );
@@ -28,47 +26,52 @@ export async function POST(request: Request) {
 
     if (!name || !phone) {
       return NextResponse.json(
-        { success: false, message: "Имя и телефон обязательны" },
+        {
+          success: false,
+          message: "Заполните имя и телефон",
+        },
         { status: 400 }
       );
     }
 
-    const supabase = createClient(supabaseUrl, supabaseKey);
+    const supabase = createClient(supabaseUrl, supabaseKey, {
+      auth: {
+        persistSession: false,
+        autoRefreshToken: false,
+      },
+    });
 
-    const { data, error } = await supabase
-      .from("leads")
-      .insert({
-        name,
-        phone,
-        email,
-        interest,
-        message,
-        source: "archipar.ru",
-      })
-      .select();
+    const { error } = await supabase.from("leads").insert({
+      name,
+      phone,
+      email: email || null,
+      interest: interest || null,
+      message: message || null,
+      source: "archipar.ru",
+    });
 
     if (error) {
       return NextResponse.json(
         {
           success: false,
-          message: "Supabase insert error",
-          error,
+          message: error.message || "Ошибка сохранения заявки",
         },
         { status: 500 }
       );
     }
 
-    return NextResponse.json({
-      success: true,
-      message: "Заявка сохранена",
-      data,
-    });
-  } catch (error) {
+    return NextResponse.json(
+      {
+        success: true,
+        message: "Заявка успешно отправлена",
+      },
+      { status: 200 }
+    );
+  } catch {
     return NextResponse.json(
       {
         success: false,
-        message: "Server error",
-        error: error instanceof Error ? error.message : String(error),
+        message: "Ошибка сервера. Попробуйте позже.",
       },
       { status: 500 }
     );
