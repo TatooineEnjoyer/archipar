@@ -3,23 +3,56 @@
 :root {
   --background: #f4f0e8;
   --foreground: #111111;
+
   --bronze: #8a6a43;
+  --bronze-light: #b8935f;
+  --bronze-dark: #5f482d;
+
   --stone: #e6ddd0;
+  --stone-light: #f8f3ea;
+  --stone-dark: #d5c8b7;
+
   --dark: #111111;
+  --dark-soft: #181818;
+
+  --glass-light: rgba(244, 240, 232, 0.74);
+  --glass-dark: rgba(17, 17, 17, 0.58);
+
+  --shadow-soft: 0 22px 70px rgba(0, 0, 0, 0.1);
+  --shadow-premium: 0 28px 90px rgba(0, 0, 0, 0.18);
+  --radius-premium: 34px;
 }
 
 html {
   scroll-behavior: smooth;
+  background: var(--background);
 }
 
 body {
   margin: 0;
-  background: var(--background);
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(184, 147, 95, 0.14), transparent 30%),
+    radial-gradient(circle at 90% 20%, rgba(255, 255, 255, 0.42), transparent 28%),
+    linear-gradient(180deg, #f8f3ea 0%, var(--background) 42%, #efe5d6 100%);
   color: var(--foreground);
   font-family: var(--font-body), Arial, sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(17, 17, 17, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 17, 17, 0.018) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.28), transparent 72%);
 }
 
 h1,
@@ -30,6 +63,11 @@ h5,
 h6 {
   font-family: var(--font-display), Arial, sans-serif;
   font-weight: 300;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 a {
@@ -37,16 +75,16 @@ a {
   text-decoration: none;
 }
 
+img {
+  user-select: none;
+}
+
 ::selection {
-  background: rgba(138, 106, 67, 0.24);
+  background: rgba(138, 106, 67, 0.28);
+  color: #111;
 }
 
-.premium-glass {
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.1);
-}
-
+/* Общий премиальный контейнер */
 .container-premium {
   width: min(calc(100% - 28px), 1280px);
   margin-inline: auto;
@@ -54,12 +92,91 @@ a {
 
 @media (min-width: 768px) {
   .container-premium {
-    width: min(calc(100% - 48px), 1280px);
+    width: min(calc(100% - 52px), 1320px);
   }
 }
 
+@media (min-width: 1440px) {
+  .container-premium {
+    width: min(calc(100% - 80px), 1360px);
+  }
+}
+
+/* Стеклянные блоки */
+.premium-glass {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(244, 240, 232, 0.48));
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  backdrop-filter: blur(20px) saturate(135%);
+  -webkit-backdrop-filter: blur(20px) saturate(135%);
+  box-shadow: var(--shadow-soft);
+}
+
+.premium-glass-dark {
+  background:
+    linear-gradient(135deg, rgba(20, 20, 20, 0.72), rgba(20, 20, 20, 0.42));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px) saturate(130%);
+  -webkit-backdrop-filter: blur(20px) saturate(130%);
+  box-shadow: var(--shadow-premium);
+}
+
+/* Чтобы верхнее меню не становилось нечитаемым */
+header nav a {
+  position: relative;
+  isolation: isolate;
+}
+
+header nav a:hover,
+header nav a:focus-visible,
+header nav a:active {
+  background: linear-gradient(135deg, var(--bronze-light), var(--bronze));
+  color: #fff !important;
+  box-shadow: 0 12px 34px rgba(138, 106, 67, 0.28);
+}
+
+/* Универсальные кнопки, можно использовать в компонентах */
+.btn-premium-light {
+  background: rgba(255, 255, 255, 0.94);
+  color: #111;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.16);
+}
+
+.btn-premium-light:hover {
+  background: #fff;
+  color: #111;
+  transform: translateY(-2px);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
+}
+
+.btn-premium-gold {
+  background: linear-gradient(135deg, var(--bronze-light), var(--bronze));
+  color: #fff;
+  box-shadow: 0 18px 50px rgba(138, 106, 67, 0.28);
+}
+
+.btn-premium-gold:hover {
+  background: linear-gradient(135deg, #caa26b, var(--bronze));
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 24px 70px rgba(138, 106, 67, 0.36);
+}
+
+.btn-premium-dark {
+  background: #111;
+  color: #fff;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+}
+
+.btn-premium-dark:hover {
+  background: var(--bronze);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Анимации появления */
 .reveal-up {
-  animation: reveal-up 0.9s ease both;
+  animation: reveal-up 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .reveal-delay-1 {
@@ -74,29 +191,93 @@ a {
   animation-delay: 0.32s;
 }
 
-.image-drift {
-  transform: scale(1.06);
-  animation: image-drift 18s ease-in-out infinite alternate;
+.reveal-delay-4 {
+  animation-delay: 0.44s;
 }
 
+/* Медленное дыхание больших изображений */
+.image-drift {
+  transform: scale(1.055);
+  animation: image-drift 22s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* Карточки */
 .parallax-card {
-  transform: translateY(0);
-  transition: transform 700ms ease, box-shadow 700ms ease;
+  transform: translateY(0) scale(1);
+  transition:
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
 }
 
 .parallax-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: var(--shadow-premium);
 }
 
+.parallax-card:hover img {
+  filter: saturate(1.06) contrast(1.03);
+}
+
+/* Тонкая внутренняя рамка для дорогого вида */
 .premium-ring {
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.18),
+    0 24px 80px rgba(0, 0, 0, 0.14);
+}
+
+.premium-ring-dark {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 28px 90px rgba(0, 0, 0, 0.28);
+}
+
+/* Аккуратный hover для изображений */
+.image-premium {
+  filter: saturate(0.96) contrast(1.02);
+  transition:
+    transform 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 900ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.group:hover .image-premium {
+  transform: scale(1.055);
+  filter: saturate(1.08) contrast(1.04);
+}
+
+/* Красивый фокус, чтобы не было синего дефолта */
+:focus-visible {
+  outline: 2px solid rgba(184, 147, 95, 0.75);
+  outline-offset: 4px;
+}
+
+/* Скроллбар под стиль сайта */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #efe5d6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--bronze-light), var(--bronze));
+  border-radius: 999px;
+  border: 2px solid #efe5d6;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bronze-dark);
 }
 
 @keyframes reveal-up {
   from {
     opacity: 0;
-    transform: translateY(26px);
+    transform: translateY(28px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -105,16 +286,43 @@ a {
 
 @keyframes image-drift {
   from {
-    transform: scale(1.06) translate3d(-1.2%, -1.2%, 0);
+    transform: scale(1.055) translate3d(-1.1%, -1.1%, 0);
   }
+
   to {
-    transform: scale(1.12) translate3d(1.2%, 1.2%, 0);
+    transform: scale(1.11) translate3d(1.1%, 1.1%, 0);
   }
 }
 
+/* Мобильная аккуратность */
+@media (max-width: 767px) {
+  body::before {
+    background-size: 48px 48px;
+    opacity: 0.55;
+  }
+
+  .premium-glass {
+    backdrop-filter: blur(14px) saturate(125%);
+    -webkit-backdrop-filter: blur(14px) saturate(125%);
+  }
+
+  .parallax-card:hover {
+    transform: none;
+  }
+}
+
+/* Если у пользователя отключены анимации */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
   }
 
   .reveal-up,
