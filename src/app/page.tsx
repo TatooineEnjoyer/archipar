@@ -111,11 +111,6 @@ const cases = [
     image: "/images/cases/case-03.jpg",
   },
   {
-    title: "Сауна и зона отдыха под ключ",
-    type: "Архитектура отдыха",
-    image: "/images/cases/case-04.jfif",
-  },
-  {
     title: "Гостевой банный комплекс",
     type: "Коммерческий объект",
     image: "/images/cases/case-05.jfif",
