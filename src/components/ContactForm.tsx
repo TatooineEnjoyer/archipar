@@ -54,7 +54,7 @@ export default function ContactForm() {
 
       if (!response.ok || !data.success) {
         setStatus("error");
-        setStatusText(data.message || "Не удалось отправить заявку");
+        setStatusText(data.error?.message || data.message || "Не удалось отправить заявку");
         return;
       }
 
