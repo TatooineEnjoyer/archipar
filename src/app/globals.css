@@ -42,8 +42,88 @@ a {
 }
 
 .premium-glass {
-  background: rgba(244, 240, 232, 0.76);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   box-shadow: 0 22px 70px rgba(0, 0, 0, 0.1);
+}
+
+.container-premium {
+  width: min(calc(100% - 32px), 1180px);
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .container-premium {
+    width: min(calc(100% - 64px), 1180px);
+  }
+}
+
+.reveal-up {
+  animation: reveal-up 0.9s ease both;
+}
+
+.reveal-delay-1 {
+  animation-delay: 0.12s;
+}
+
+.reveal-delay-2 {
+  animation-delay: 0.22s;
+}
+
+.reveal-delay-3 {
+  animation-delay: 0.32s;
+}
+
+.image-drift {
+  transform: scale(1.06);
+  animation: image-drift 18s ease-in-out infinite alternate;
+}
+
+.parallax-card {
+  transform: translateY(0);
+  transition: transform 700ms ease, box-shadow 700ms ease;
+}
+
+.parallax-card:hover {
+  transform: translateY(-8px);
+}
+
+.premium-ring {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes image-drift {
+  from {
+    transform: scale(1.06) translate3d(-1.2%, -1.2%, 0);
+  }
+  to {
+    transform: scale(1.12) translate3d(1.2%, 1.2%, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal-up,
+  .image-drift {
+    animation: none;
+  }
+
+  .parallax-card,
+  .parallax-card:hover {
+    transform: none;
+  }
 }
