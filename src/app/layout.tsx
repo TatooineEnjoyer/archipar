@@ -18,6 +18,14 @@ export const metadata: Metadata = {
   title: "ARCHIPAR — Премиальные банные комплексы под ключ",
   description:
     "ARCHIPAR проектирует и реализует премиальные банные комплексы: бани, сауны, хамамы, зоны отдыха, инженерия климата и авторские сценарии пара.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/images/logo/archipar-logo.png", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/images/logo/archipar-logo.png",
+  },
 };
 
 export default function RootLayout({
