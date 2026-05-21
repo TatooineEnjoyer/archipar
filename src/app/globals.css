@@ -48,13 +48,13 @@ a {
 }
 
 .container-premium {
-  width: min(calc(100% - 32px), 1180px);
+  width: min(calc(100% - 28px), 1280px);
   margin-inline: auto;
 }
 
 @media (min-width: 768px) {
   .container-premium {
-    width: min(calc(100% - 64px), 1180px);
+    width: min(calc(100% - 48px), 1280px);
   }
 }
 
