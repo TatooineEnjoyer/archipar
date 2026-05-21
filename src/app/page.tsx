@@ -14,22 +14,22 @@ import {
 
 const complexes = [
   {
-    title: "Частные комплексы",
-    text: "Персональное пространство отдыха для загородного дома, резиденции или семейного участка.",
+    title: "Банные комплексы",
+    text: "Цельное пространство отдыха: парная, хамам, сауна, зона отдыха, купель, душевая и инженерия климата.",
     image: "/images/complexes/private-complex.jpg",
-    href: "#request",
+    href: "/bath-complexes",
   },
   {
-    title: "Комплексы в доме",
-    text: "Интеграция парной, хамама и зоны отдыха в архитектуру существующего или нового дома.",
-    image: "/images/complexes/house-complex.jpg",
-    href: "#request",
+    title: "Бани",
+    text: "Русская баня как архитектурный и климатический сценарий: пар, дерево, свет и правильная инженерия.",
+    image: "/images/modules/steam-room.jpg",
+    href: "/baths",
   },
   {
-    title: "Гостевые и коммерческие комплексы",
-    text: "Банные пространства для отелей, глэмпингов, клубных домов и премиальных объектов.",
-    image: "/images/complexes/commercial-complex.jpg",
-    href: "#request",
+    title: "Хамамы",
+    text: "Камень, мягкое тепло, пар и приватная SPA-атмосфера внутри дома или отдельного комплекса.",
+    image: "/images/cases/case-06.jfif",
+    href: "/hamams",
   },
 ];
 
@@ -38,21 +38,21 @@ const modules = [
     title: "Парная",
     text: "Температура, влажность, полки, свет и сценарии пара проектируются как единая система.",
     image: "/images/modules/steam-room.jpg",
-    href: "#request",
+    href: "/baths",
     icon: Flame,
   },
   {
     title: "Хамам",
     text: "Мягкое тепло, камень, пар и приватная SPA-атмосфера внутри комплекса.",
-    image: "/images/modules/hamam.jpg",
-    href: "#request",
+    image: "/images/cases/case-06.jfif",
+    href: "/hamams",
     icon: Droplets,
   },
   {
     title: "Сауна",
     text: "Сухой жар, точная эргономика, свет и безопасная инженерная реализация.",
     image: "/images/modules/sauna.jpg",
-    href: "#request",
+    href: "/saunas",
     icon: Flame,
   },
   {
@@ -100,19 +100,19 @@ const cases = [
   {
     title: "Сауна и зона отдыха под ключ",
     type: "Архитектура отдыха",
-    image: "/images/cases/case-04.jpg",
+    image: "/images/cases/case-04.jfif",
     href: "#request",
   },
   {
     title: "Гостевой банный комплекс",
     type: "Коммерческий объект",
-    image: "/images/cases/case-05.jpg",
+    image: "/images/cases/case-05.jfif",
     href: "#request",
   },
   {
     title: "Комплекс с купелью и душевой зоной",
     type: "Контрастные процедуры",
-    image: "/images/cases/case-06.jpg",
+    image: "/images/cases/case-06.jfif",
     href: "#request",
   },
 ];
@@ -149,7 +149,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/28 to-black/10" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
 
-        <div className="relative z-10 flex min-h-screen items-end px-6 pb-16 md:px-12 lg:px-20">
+        <div className="relative z-10 flex min-h-screen items-end px-6 pb-16 pt-32 md:px-12 lg:px-20">
           <div className="max-w-5xl text-white">
             <p className="mb-6 text-xs uppercase tracking-[0.35em] text-white/70">
               architecture · climate · bath culture
@@ -191,7 +191,7 @@ export default function Home() {
               key={item}
               className="flex items-center gap-3 text-sm text-black/70"
             >
-              <ShieldCheck className="h-5 w-5 text-[#8a6a43]" />
+              <ShieldCheck className="h-5 w-5 shrink-0 text-[#8a6a43]" />
               <span>{item}</span>
             </div>
           ))}
@@ -460,33 +460,6 @@ export default function Home() {
   );
 }
 
-function Header() {
-  return (
-    <header className="fixed left-0 top-0 z-50 w-full px-6 py-5 text-white mix-blend-difference md:px-12 lg:px-20">
-      <div className="flex items-center justify-between">
-        <Link href="/" className="text-sm font-bold tracking-[0.35em]">
-          ARCHIPAR
-        </Link>
-
-        <nav className="hidden items-center gap-8 text-xs uppercase tracking-[0.22em] md:flex">
-          <Link href="#complexes">Комплексы</Link>
-          <Link href="#modules">Модули</Link>
-          <Link href="#cases">Кейсы</Link>
-          <Link href="#process">Процесс</Link>
-          <Link href="#request">Контакты</Link>
-        </nav>
-
-        <Link
-          href="#request"
-          className="hidden rounded-full border border-white/30 px-5 py-3 text-xs uppercase tracking-[0.2em] md:block"
-        >
-          Заявка
-        </Link>
-      </div>
-    </header>
-  );
-}
-
 function SectionIntro({
   eyebrow,
   title,
@@ -566,11 +539,12 @@ function Footer() {
         </div>
 
         <div className="grid gap-3 text-sm text-white/60">
-          <Link href="#complexes">Банные комплексы</Link>
-          <Link href="#modules">Модули комплекса</Link>
-          <Link href="#cases">Кейсы</Link>
-          <Link href="#process">Процесс</Link>
-          <Link href="#request">Контакты</Link>
+          <Link href="/bath-complexes">Банные комплексы</Link>
+          <Link href="/baths">Бани</Link>
+          <Link href="/saunas">Сауны</Link>
+          <Link href="/hamams">Хамамы</Link>
+          <Link href="/#cases">Кейсы</Link>
+          <Link href="/#request">Контакты</Link>
         </div>
 
         <div className="text-sm text-white/60">
@@ -578,7 +552,7 @@ function Footer() {
           <p className="mt-2">
             Проектирование и реализация премиальных объектов
           </p>
-          <Link href="#request" className="mt-6 inline-block text-white">
+          <Link href="/#request" className="mt-6 inline-block text-white">
             Обсудить проект →
           </Link>
         </div>
