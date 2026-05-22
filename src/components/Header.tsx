@@ -88,11 +88,11 @@ export default function Header() {
             href="/#request"
             className={`border px-6 py-2.5 text-[10px] font-semibold uppercase tracking-widest transition-all duration-300 ${
               isScrolled
-                ? "border-[#c8aa78] bg-[#c8aa78] text-black hover:bg-black hover:text-[#c8aa78]"
-                : "border-[#c8aa78] bg-black/75 text-[#c8aa78] backdrop-blur-sm hover:bg-[#c8aa78] hover:text-black"
+                ? "border-[#8a6a43] bg-[#8a6a43] text-white hover:bg-[#6f5332] hover:border-[#6f5332]"
+                : "border-white/40 bg-transparent text-white hover:bg-white hover:text-black hover:border-white"
             }`}
           >
-            Консультация
+            Оставить заявку
           </Link>
         </div>
 
