@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState, type CSSProperties } from "react";
+import { useEffect, useState } from "react";
 
 const navItems = [
   { label: "Комплексы", href: "/bath-complexes" },
@@ -13,81 +13,27 @@ const navItems = [
 ];
 
 export default function Header() {
-  const [scrollY, setScrollY] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    let frameId = 0;
-
     function handleScroll() {
-      cancelAnimationFrame(frameId);
-
-      frameId = requestAnimationFrame(() => {
-        setScrollY(window.scrollY);
-      });
+      setIsScrolled(window.scrollY > 40);
     }
 
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
 
-    return () => {
-      cancelAnimationFrame(frameId);
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const scrollProgress = Math.min(scrollY / 180, 1);
-  const isScrolled = scrollY > 36;
-
-  const barParallaxY = -18 + scrollProgress * 18 + Math.min(scrollY * 0.018, 7);
-  const glowParallaxY = -Math.min(scrollY * 0.035, 12);
-
-  const requestButtonStyle = {
-    "--header-request-bg": isScrolled
-      ? "rgba(138, 106, 67, 0.86)"
-      : "rgba(255, 255, 255, 0.10)",
-    "--header-request-border": isScrolled
-      ? "rgba(138, 106, 67, 0.78)"
-      : "rgba(255, 255, 255, 0.42)",
-    "--header-request-color": "#ffffff",
-    "--header-request-hover-bg": isScrolled
-      ? "rgba(111, 83, 50, 0.96)"
-      : "rgba(255, 255, 255, 0.92)",
-    "--header-request-hover-color": isScrolled ? "#ffffff" : "#111111",
-    "--header-request-shadow": isScrolled
-      ? "0 12px 34px rgba(0, 0, 0, 0.16), 0 0 18px rgba(200, 170, 120, 0.12)"
-      : "0 10px 28px rgba(0, 0, 0, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.18)",
-  } as CSSProperties;
 
   return (
     <header
-      className={`site-header fixed left-0 top-0 z-50 isolate w-full overflow-hidden transition-[padding] duration-700 ease-out ${
-        isScrolled ? "py-4" : "py-6 md:py-8"
+      className={`fixed left-0 top-0 z-50 w-full transition-all duration-500 ease-in-out ${
+        isScrolled
+          ? "bg-[#f8f5f0]/45 border-b border-black/[0.03] py-4 backdrop-blur-sm shadow-none"
+          : "bg-transparent py-6 md:py-8"
       }`}
     >
-      {/* Прозрачная полоса с параллаксом */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-full border-b border-black/[0.04] shadow-[0_18px_55px_rgba(0,0,0,0.055)] backdrop-blur-xl"
-        style={{
-          opacity: scrollProgress * 0.92,
-          transform: `translate3d(0, ${barParallaxY}px, 0)`,
-          background:
-            "linear-gradient(180deg, rgba(248, 245, 240, 0.52) 0%, rgba(248, 245, 240, 0.34) 100%)",
-        }}
-      />
-
-      {/* Лёгкий золотой отблеск внутри полосы */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-full"
-        style={{
-          opacity: scrollProgress * 0.45,
-          transform: `translate3d(0, ${glowParallaxY}px, 0)`,
-          background:
-            "radial-gradient(circle at 50% -40%, rgba(200, 170, 120, 0.26), transparent 62%)",
-        }}
-      />
-
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 sm:px-8 lg:px-12">
         {/* Логотип бюро */}
         <Link
@@ -138,10 +84,14 @@ export default function Header() {
             ))}
           </nav>
 
+          {/* Кнопка для десктопа */}
           <Link
             href="/#request"
-            style={requestButtonStyle}
-            className="header-request-link border px-6 py-2.5 text-[10px] font-semibold uppercase tracking-widest backdrop-blur-md transition-all duration-300"
+            className={`border px-6 py-2.5 text-[10px] font-semibold uppercase tracking-widest transition-all duration-300 ${
+              isScrolled
+                ? "border-[#8a6a43] bg-[#8a6a43] text-white hover:border-[#6f5332] hover:bg-[#6f5332]"
+                : "border-white/40 bg-transparent text-white hover:border-white hover:bg-white hover:text-black"
+            }`}
           >
             Оставить заявку
           </Link>
@@ -158,10 +108,14 @@ export default function Header() {
             Проекты
           </Link>
 
+          {/* Кнопка для мобильных */}
           <Link
             href="/#request"
-            style={requestButtonStyle}
-            className="header-request-link border px-4 py-2 text-[10px] font-medium uppercase tracking-widest backdrop-blur-md transition-all duration-300"
+            className={`border px-4 py-2 text-[10px] font-medium uppercase tracking-widest transition-all duration-300 ${
+              isScrolled
+                ? "border-[#8a6a43] bg-[#8a6a43] text-white"
+                : "border-white/40 bg-white/10 text-white backdrop-blur-sm"
+            }`}
           >
             Заявка
           </Link>
