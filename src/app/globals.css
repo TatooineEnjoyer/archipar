@@ -158,6 +158,7 @@ header {
     backdrop-filter 320ms ease;
 }
 
+/* Обычные ссылки в шапке */
 header nav a {
   position: relative;
   isolation: isolate;
@@ -170,7 +171,8 @@ header nav a {
     transform 260ms ease;
 }
 
-header nav a::after {
+/* Подчёркивание только у обычных ссылок, не у кнопки заявки */
+header nav a:not([href="#request"]):not([href="/#request"])::after {
   content: "";
   position: absolute;
   left: 14px;
@@ -186,15 +188,15 @@ header nav a::after {
     transform 260ms ease;
 }
 
-header nav a:hover,
-header nav a:focus-visible {
+header nav a:not([href="#request"]):not([href="/#request"]):hover,
+header nav a:not([href="#request"]):not([href="/#request"]):focus-visible {
   color: var(--gold) !important;
   background: rgba(200, 170, 120, 0.08);
   transform: translateY(-1px);
 }
 
-header nav a:hover::after,
-header nav a:focus-visible::after {
+header nav a:not([href="#request"]):not([href="/#request"]):hover::after,
+header nav a:not([href="#request"]):not([href="/#request"]):focus-visible::after {
   opacity: 0.42;
   transform: scaleX(1);
 }
@@ -266,9 +268,16 @@ header nav a:focus-visible::after {
     0 0 34px rgba(200, 170, 120, 0.28);
 }
 
-/* Все переходы к форме — всегда видимые */
-a[href="#request"],
-a[href="/#request"] {
+/*
+  Кнопки перехода к форме.
+  Важно: теперь стили не цепляют footer и случайные ссылки по всему сайту.
+  Работают только:
+  1) внутри main
+  2) у элементов с className="btn-request"
+*/
+main a[href="#request"],
+main a[href="/#request"],
+.btn-request {
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -292,8 +301,9 @@ a[href="/#request"] {
     box-shadow 260ms ease;
 }
 
-a[href="#request"]::before,
-a[href="/#request"]::before {
+main a[href="#request"]::before,
+main a[href="/#request"]::before,
+.btn-request::before {
   content: "";
   position: absolute;
   inset: -2px;
@@ -313,8 +323,9 @@ a[href="/#request"]::before {
   transition: transform 760ms ease;
 }
 
-a[href="#request"]::after,
-a[href="/#request"]::after {
+main a[href="#request"]::after,
+main a[href="/#request"]::after,
+.btn-request::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -325,10 +336,12 @@ a[href="/#request"]::after {
   transition: opacity 260ms ease;
 }
 
-a[href="#request"]:hover,
-a[href="/#request"]:hover,
-a[href="#request"]:focus-visible,
-a[href="/#request"]:focus-visible {
+main a[href="#request"]:hover,
+main a[href="/#request"]:hover,
+main a[href="#request"]:focus-visible,
+main a[href="/#request"]:focus-visible,
+.btn-request:hover,
+.btn-request:focus-visible {
   border-color: var(--gold-light) !important;
   background:
     linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 48%, var(--bronze) 100%) !important;
@@ -339,40 +352,61 @@ a[href="/#request"]:focus-visible {
     0 0 36px rgba(200, 170, 120, 0.34);
 }
 
-a[href="#request"]:hover::before,
-a[href="/#request"]:hover::before,
-a[href="#request"]:focus-visible::before,
-a[href="/#request"]:focus-visible::before {
+main a[href="#request"]:hover::before,
+main a[href="/#request"]:hover::before,
+main a[href="#request"]:focus-visible::before,
+main a[href="/#request"]:focus-visible::before,
+.btn-request:hover::before,
+.btn-request:focus-visible::before {
   transform: translateX(130%);
 }
 
-a[href="#request"]:hover::after,
-a[href="/#request"]:hover::after,
-a[href="#request"]:focus-visible::after,
-a[href="/#request"]:focus-visible::after {
+main a[href="#request"]:hover::after,
+main a[href="/#request"]:hover::after,
+main a[href="#request"]:focus-visible::after,
+main a[href="/#request"]:focus-visible::after,
+.btn-request:hover::after,
+.btn-request:focus-visible::after {
   opacity: 1;
 }
 
-a[href="#request"]:active,
-a[href="/#request"]:active {
+main a[href="#request"]:active,
+main a[href="/#request"]:active,
+.btn-request:active {
   transform: translateY(0);
   box-shadow:
     0 10px 26px rgba(0, 0, 0, 0.28),
     0 0 18px rgba(200, 170, 120, 0.2);
 }
 
-/* Кнопка консультации в шапке — отдельно, чтобы nav hover её не ломал */
+/* Кнопка консультации в шапке */
 header nav a[href="#request"],
 header nav a[href="/#request"],
 header a[href="#request"],
 header a[href="/#request"] {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
   border: 1px solid var(--gold) !important;
   background:
     linear-gradient(135deg, #111111 0%, #050505 100%) !important;
   color: var(--gold) !important;
+
   border-radius: 0 !important;
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.22),
+    0 0 20px rgba(200, 170, 120, 0.12);
+
+  transition:
+    transform 260ms ease,
+    background 260ms ease,
+    color 260ms ease,
+    border-color 260ms ease,
+    box-shadow 260ms ease;
 }
 
+/* Убираем декоративное подчёркивание у кнопки в шапке */
 header nav a[href="#request"]::after,
 header nav a[href="/#request"]::after,
 header a[href="#request"]::after,
@@ -383,25 +417,39 @@ header a[href="/#request"]::after {
 header nav a[href="#request"]:hover,
 header nav a[href="/#request"]:hover,
 header a[href="#request"]:hover,
-header a[href="/#request"]:hover {
+header a[href="/#request"]:hover,
+header nav a[href="#request"]:focus-visible,
+header nav a[href="/#request"]:focus-visible,
+header a[href="#request"]:focus-visible,
+header a[href="/#request"]:focus-visible {
   border-color: var(--gold-light) !important;
   background:
     linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--bronze) 100%) !important;
   color: #111 !important;
   transform: translateY(-2px);
+  box-shadow:
+    0 18px 46px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(200, 170, 120, 0.26);
 }
 
-/* Вторичные кнопки к портфолио */
-a[href="#portfolio"],
-a[href="/#portfolio"] {
+/*
+  Вторичные кнопки к портфолио.
+  Теперь не цепляют footer и случайные ссылки.
+*/
+main a[href="#portfolio"],
+main a[href="/#portfolio"],
+.btn-portfolio {
   position: relative;
   overflow: hidden;
+
   border-color: var(--gold) !important;
   background: rgba(17, 17, 17, 0.82) !important;
   color: var(--gold) !important;
+
   box-shadow:
     0 14px 34px rgba(0, 0, 0, 0.24),
     0 0 22px rgba(200, 170, 120, 0.12);
+
   transition:
     transform 260ms ease,
     background 260ms ease,
@@ -409,14 +457,41 @@ a[href="/#portfolio"] {
     box-shadow 260ms ease;
 }
 
-a[href="#portfolio"]:hover,
-a[href="/#portfolio"]:hover {
+main a[href="#portfolio"]:hover,
+main a[href="/#portfolio"]:hover,
+main a[href="#portfolio"]:focus-visible,
+main a[href="/#portfolio"]:focus-visible,
+.btn-portfolio:hover,
+.btn-portfolio:focus-visible {
   background: var(--gold) !important;
   color: #111 !important;
   transform: translateY(-2px);
   box-shadow:
     0 18px 46px rgba(0, 0, 0, 0.28),
     0 0 30px rgba(200, 170, 120, 0.28);
+}
+
+/* Footer: ссылки внизу не должны превращаться в золотые кнопки */
+footer a[href="#request"],
+footer a[href="/#request"],
+footer a[href="#portfolio"],
+footer a[href="/#portfolio"] {
+  background: transparent !important;
+  color: inherit !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+footer a[href="#request"]::before,
+footer a[href="/#request"]::before,
+footer a[href="#request"]::after,
+footer a[href="/#request"]::after,
+footer a[href="#portfolio"]::before,
+footer a[href="/#portfolio"]::before,
+footer a[href="#portfolio"]::after,
+footer a[href="/#portfolio"]::after {
+  display: none !important;
 }
 
 /* Анимации появления */
@@ -642,13 +717,22 @@ select:focus {
     transform: none;
   }
 
-  a[href="#request"],
-  a[href="/#request"],
-  a[href="#portfolio"],
-  a[href="/#portfolio"] {
+  main a[href="#request"],
+  main a[href="/#request"],
+  main a[href="#portfolio"],
+  main a[href="/#portfolio"],
+  .btn-request,
+  .btn-portfolio {
     box-shadow:
       0 12px 28px rgba(0, 0, 0, 0.22),
       0 0 18px rgba(200, 170, 120, 0.14);
+  }
+
+  footer a[href="#request"],
+  footer a[href="/#request"],
+  footer a[href="#portfolio"],
+  footer a[href="/#portfolio"] {
+    box-shadow: none !important;
   }
 }
 
