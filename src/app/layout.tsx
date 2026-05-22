@@ -3,18 +3,23 @@ import { Montserrat, Manrope } from "next/font/google";
 import Footer from "../components/Footer";
 import "./globals.css";
 
+// Подключение шрифта для заголовков и логотипа
 const montserrat = Montserrat({
   subsets: ["latin", "cyrillic"],
   weight: ["300", "400", "500", "600"],
   variable: "--font-display",
+  display: "swap",
 });
 
+// Подключение шрифта для основного текста
 const manrope = Manrope({
   subsets: ["latin", "cyrillic"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["400", "500", "600"],
   variable: "--font-body",
+  display: "swap",
 });
 
+// SEO-метаданные и конфигурация иконок
 export const metadata: Metadata = {
   title: "ARCHIPAR — Премиальные банные комплексы под ключ",
   description:
@@ -31,15 +36,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="ru" className={`${montserrat.variable} ${manrope.variable}`}>
-      <body className="min-h-screen flex flex-col justify-between">
-        <main className="flex-grow">
+      <body className="min-h-screen flex flex-col justify-between antialiased">
+        {/* Контент страницы */}
+        <main className="flex-grow w-full">
           {children}
         </main>
+
+        {/* Глобальный подвал сайта */}
         <Footer />
       </body>
     </html>
