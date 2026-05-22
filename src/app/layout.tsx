@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import { Montserrat, Manrope } from "next/font/google";
-import Footer from "@/components/Footer";
+import Footer from "../components/Footer";
 import "./globals.css";
 
-// Стильный архитектурный шрифт для заголовков (вместо крючковатой антиквы)
 const montserrat = Montserrat({
   subsets: ["latin", "cyrillic"],
   weight: ["300", "400", "500", "600"],
   variable: "--font-display",
 });
 
-// Чистый базовый шрифт для легкого чтения контента
 const manrope = Manrope({
   subsets: ["latin", "cyrillic"],
   weight: ["300", "400", "500", "600"],
@@ -39,12 +37,9 @@ export default function RootLayout({
   return (
     <html lang="ru" className={`${montserrat.variable} ${manrope.variable}`}>
       <body className="min-h-screen flex flex-col justify-between">
-        {/* Основной контент страниц */}
         <main className="flex-grow">
           {children}
         </main>
-        
-        {/* Сквозной премиальный подвал сайта */}
         <Footer />
       </body>
     </html>
