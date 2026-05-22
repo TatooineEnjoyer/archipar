@@ -1,16 +1,19 @@
 import type { Metadata } from "next";
-import { Inter, Manrope } from "next/font/google";
+import { Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+// Премиальная антиква для заголовков
+const cormorantGaramond = Cormorant_Garamond({
   subsets: ["latin", "cyrillic"],
   weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
   variable: "--font-display",
 });
 
+// Геометрический гротеск для основного текста
 const manrope = Manrope({
   subsets: ["latin", "cyrillic"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-body",
 });
 
@@ -34,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru" className={`${inter.variable} ${manrope.variable}`}>
+    <html lang="ru" className={`${cormorantGaramond.variable} ${manrope.variable}`}>
       <body>{children}</body>
     </html>
   );
