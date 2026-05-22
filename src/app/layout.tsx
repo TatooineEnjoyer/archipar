@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { Montserrat, Manrope } from "next/font/google";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
-// Премиальная антиква для заголовков
-const cormorantGaramond = Cormorant_Garamond({
+// Стильный архитектурный шрифт для заголовков (вместо крючковатой антиквы)
+const montserrat = Montserrat({
   subsets: ["latin", "cyrillic"],
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  weight: ["300", "400", "500", "600"],
   variable: "--font-display",
 });
 
-// Геометрический гротеск для основного текста
+// Чистый базовый шрифт для легкого чтения контента
 const manrope = Manrope({
   subsets: ["latin", "cyrillic"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600"],
   variable: "--font-body",
 });
 
@@ -37,8 +37,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru" className={`${cormorantGaramond.variable} ${manrope.variable}`}>
-      <body>{children}</body>
+    <html lang="ru" className={`${montserrat.variable} ${manrope.variable}`}>
+      <body className="min-h-screen flex flex-col justify-between">
+        {/* Основной контент страниц */}
+        <main className="flex-grow">
+          {children}
+        </main>
+        
+        {/* Сквозной премиальный подвал сайта */}
+        <Footer />
+      </body>
     </html>
   );
 }
