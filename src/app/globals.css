@@ -763,3 +763,42 @@ select:focus {
     transform: none;
   }
 }
+header a[href="#portfolio"],
+header a[href="/#portfolio"],
+.site-header a[href="#portfolio"],
+.site-header a[href="/#portfolio"] {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  color: inherit !important;
+  transform: none !important;
+}
+
+header a[href="#portfolio"]::before,
+header a[href="/#portfolio"]::before,
+.site-header a[href="#portfolio"]::before,
+.site-header a[href="/#portfolio"]::before {
+  display: none !important;
+}
+
+/* Оставляем только аккуратное подчёркивание при наведении */
+header nav a[href="#portfolio"]::after,
+header nav a[href="/#portfolio"]::after {
+  display: block !important;
+  content: "";
+  position: absolute;
+  left: 0;
+  right: auto;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  opacity: 1;
+  transform: none;
+  transition: width 300ms ease;
+}
+
+header nav a[href="#portfolio"]:hover::after,
+header nav a[href="/#portfolio"]:hover::after {
+  width: 100%;
+}
