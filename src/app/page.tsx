@@ -218,8 +218,8 @@ export default function Home() {
             />
 
             <Link
-              href="#request"
-              className="inline-flex items-center gap-2 border-b border-[#8a6a43] pb-1 text-xs font-semibold uppercase tracking-widest text-[#8a6a43] transition-colors hover:text-black"
+              href="?section=request#request"
+              className="inline-flex items-center gap-2 border-b border-[#8a6a43] bg-transparent pb-1 text-xs font-semibold uppercase tracking-widest text-[#8a6a43] shadow-none transition-colors hover:text-black"
             >
               Обсудить похожий проект
               <ArrowUpRight className="h-3 w-3" />
