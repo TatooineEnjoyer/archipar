@@ -4,6 +4,10 @@
   --background: #f4f0e8;
   --foreground: #111111;
 
+  --gold: #c8aa78;
+  --gold-light: #e0c28d;
+  --gold-soft: rgba(200, 170, 120, 0.18);
+
   --bronze: #8a6a43;
   --bronze-light: #b8935f;
   --bronze-dark: #5f482d;
@@ -20,6 +24,8 @@
 
   --shadow-soft: 0 22px 70px rgba(0, 0, 0, 0.1);
   --shadow-premium: 0 28px 90px rgba(0, 0, 0, 0.18);
+  --shadow-gold: 0 18px 46px rgba(138, 106, 67, 0.28);
+
   --radius-premium: 34px;
 }
 
@@ -32,9 +38,10 @@ body {
   margin: 0;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at 15% 10%, rgba(184, 147, 95, 0.14), transparent 30%),
-    radial-gradient(circle at 90% 20%, rgba(255, 255, 255, 0.42), transparent 28%),
-    linear-gradient(180deg, #f8f3ea 0%, var(--background) 42%, #efe5d6 100%);
+    radial-gradient(circle at 16% 8%, rgba(200, 170, 120, 0.18), transparent 32%),
+    radial-gradient(circle at 86% 12%, rgba(255, 255, 255, 0.55), transparent 30%),
+    radial-gradient(circle at 52% 82%, rgba(138, 106, 67, 0.12), transparent 36%),
+    linear-gradient(180deg, #f8f3ea 0%, #f4f0e8 46%, #efe5d6 100%);
   color: var(--foreground);
   font-family: var(--font-body), system-ui, -apple-system, sans-serif;
   font-weight: 400;
@@ -42,18 +49,32 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Фирменная полупрозрачная фоновая сетка */
+/* Мягкая сетка на фоне */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: -2;
   pointer-events: none;
   background-image:
     linear-gradient(rgba(17, 17, 17, 0.025) 1px, transparent 1px),
     linear-gradient(90deg, rgba(17, 17, 17, 0.018) 1px, transparent 1px);
   background-size: 72px 72px;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.28), transparent 72%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.32), transparent 76%);
+}
+
+/* Еле заметное живое свечение */
+body::after {
+  content: "";
+  position: fixed;
+  inset: auto -20% -30% -20%;
+  z-index: -1;
+  height: 520px;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(200, 170, 120, 0.14), transparent 62%);
+  filter: blur(20px);
+  animation: page-glow 16s ease-in-out infinite alternate;
 }
 
 h1,
@@ -77,16 +98,21 @@ a {
   text-decoration: none;
 }
 
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
 img {
   user-select: none;
 }
 
 ::selection {
-  background: rgba(138, 106, 67, 0.2);
+  background: rgba(200, 170, 120, 0.32);
   color: #111;
 }
 
-/* Общий премиальный контейнер */
+/* Контейнер */
 .container-premium {
   width: min(calc(100% - 28px), 1280px);
   margin-inline: auto;
@@ -107,41 +133,84 @@ img {
 /* Стеклянные блоки */
 .premium-glass {
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(244, 240, 232, 0.48));
-  border: 1px solid rgba(255, 255, 255, 0.34);
-  backdrop-filter: blur(20px) saturate(135%);
-  -webkit-backdrop-filter: blur(20px) saturate(135%);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.76), rgba(244, 240, 232, 0.5));
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(22px) saturate(135%);
+  -webkit-backdrop-filter: blur(22px) saturate(135%);
   box-shadow: var(--shadow-soft);
 }
 
 .premium-glass-dark {
   background:
-    linear-gradient(135deg, rgba(20, 20, 20, 0.72), rgba(20, 20, 20, 0.42));
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px) saturate(130%);
-  -webkit-backdrop-filter: blur(20px) saturate(130%);
+    linear-gradient(135deg, rgba(20, 20, 20, 0.76), rgba(20, 20, 20, 0.46));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(22px) saturate(130%);
+  -webkit-backdrop-filter: blur(22px) saturate(130%);
   box-shadow: var(--shadow-premium);
 }
 
 /* Навигация */
+header {
+  transition:
+    background 320ms ease,
+    border-color 320ms ease,
+    box-shadow 320ms ease,
+    backdrop-filter 320ms ease;
+}
+
 header nav a {
   position: relative;
   isolation: isolate;
+  border-radius: 999px;
+  transition:
+    color 260ms ease,
+    background 260ms ease,
+    border-color 260ms ease,
+    box-shadow 260ms ease,
+    transform 260ms ease;
+}
+
+header nav a::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 5px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0;
+  transform: scaleX(0.2);
+  transform-origin: center;
+  transition:
+    opacity 260ms ease,
+    transform 260ms ease;
 }
 
 header nav a:hover,
-header nav a:focus-visible,
-header nav a:active {
-  background: linear-gradient(135deg, var(--bronze-light), var(--bronze));
-  color: #fff !important;
-  box-shadow: 0 12px 34px rgba(138, 106, 67, 0.28);
+header nav a:focus-visible {
+  color: var(--gold) !important;
+  background: rgba(200, 170, 120, 0.08);
+  transform: translateY(-1px);
 }
 
-/* Универсальные кнопки */
+header nav a:hover::after,
+header nav a:focus-visible::after {
+  opacity: 0.42;
+  transform: scaleX(1);
+}
+
+/* Главные кнопки */
 .btn-premium-light {
-  background: rgba(255, 255, 255, 0.94);
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.96);
   color: #111;
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.16);
+  transition:
+    transform 260ms ease,
+    box-shadow 260ms ease,
+    background 260ms ease,
+    color 260ms ease;
 }
 
 .btn-premium-light:hover {
@@ -152,28 +221,202 @@ header nav a:active {
 }
 
 .btn-premium-gold {
-  background: linear-gradient(135deg, var(--bronze-light), var(--bronze));
-  color: #fff;
-  box-shadow: 0 18px 50px rgba(138, 106, 67, 0.28);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold) 45%, var(--bronze));
+  color: #111;
+  box-shadow: var(--shadow-gold);
+  transition:
+    transform 260ms ease,
+    box-shadow 260ms ease,
+    background 260ms ease,
+    color 260ms ease;
 }
 
 .btn-premium-gold:hover {
-  background: linear-gradient(135deg, #caa26b, var(--bronze));
-  color: #fff;
+  color: #111;
   transform: translateY(-2px);
-  box-shadow: 0 24px 70px rgba(138, 106, 67, 0.36);
+  box-shadow:
+    0 24px 70px rgba(138, 106, 67, 0.36),
+    0 0 34px rgba(200, 170, 120, 0.28);
 }
 
 .btn-premium-dark {
+  position: relative;
+  overflow: hidden;
   background: #111;
-  color: #fff;
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+  color: var(--gold);
+  border: 1px solid rgba(200, 170, 120, 0.6);
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.22),
+    0 0 24px rgba(200, 170, 120, 0.12);
+  transition:
+    transform 260ms ease,
+    box-shadow 260ms ease,
+    background 260ms ease,
+    color 260ms ease;
 }
 
 .btn-premium-dark:hover {
-  background: var(--bronze);
-  color: #fff;
+  background: var(--gold);
+  color: #111;
   transform: translateY(-2px);
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.24),
+    0 0 34px rgba(200, 170, 120, 0.28);
+}
+
+/* Все переходы к форме — всегда видимые */
+a[href="#request"],
+a[href="/#request"] {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  border: 1px solid var(--gold) !important;
+  background:
+    linear-gradient(135deg, #111111 0%, #050505 100%) !important;
+  color: var(--gold) !important;
+
+  box-shadow:
+    0 14px 36px rgba(0, 0, 0, 0.28),
+    0 0 0 1px rgba(200, 170, 120, 0.16),
+    0 0 24px rgba(200, 170, 120, 0.16);
+
+  transform: translateY(0);
+  transition:
+    transform 260ms ease,
+    background 260ms ease,
+    color 260ms ease,
+    border-color 260ms ease,
+    box-shadow 260ms ease;
+}
+
+a[href="#request"]::before,
+a[href="/#request"]::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  background:
+    linear-gradient(
+      120deg,
+      transparent 0%,
+      transparent 34%,
+      rgba(255, 255, 255, 0.22) 45%,
+      rgba(200, 170, 120, 0.4) 50%,
+      rgba(255, 255, 255, 0.18) 56%,
+      transparent 68%,
+      transparent 100%
+    );
+  transform: translateX(-130%);
+  transition: transform 760ms ease;
+}
+
+a[href="#request"]::after,
+a[href="/#request"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(200, 170, 120, 0.28), transparent 62%);
+  opacity: 0;
+  transition: opacity 260ms ease;
+}
+
+a[href="#request"]:hover,
+a[href="/#request"]:hover,
+a[href="#request"]:focus-visible,
+a[href="/#request"]:focus-visible {
+  border-color: var(--gold-light) !important;
+  background:
+    linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 48%, var(--bronze) 100%) !important;
+  color: #111111 !important;
+  transform: translateY(-2px);
+  box-shadow:
+    0 18px 46px rgba(0, 0, 0, 0.34),
+    0 0 36px rgba(200, 170, 120, 0.34);
+}
+
+a[href="#request"]:hover::before,
+a[href="/#request"]:hover::before,
+a[href="#request"]:focus-visible::before,
+a[href="/#request"]:focus-visible::before {
+  transform: translateX(130%);
+}
+
+a[href="#request"]:hover::after,
+a[href="/#request"]:hover::after,
+a[href="#request"]:focus-visible::after,
+a[href="/#request"]:focus-visible::after {
+  opacity: 1;
+}
+
+a[href="#request"]:active,
+a[href="/#request"]:active {
+  transform: translateY(0);
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, 0.28),
+    0 0 18px rgba(200, 170, 120, 0.2);
+}
+
+/* Кнопка консультации в шапке — отдельно, чтобы nav hover её не ломал */
+header nav a[href="#request"],
+header nav a[href="/#request"],
+header a[href="#request"],
+header a[href="/#request"] {
+  border: 1px solid var(--gold) !important;
+  background:
+    linear-gradient(135deg, #111111 0%, #050505 100%) !important;
+  color: var(--gold) !important;
+  border-radius: 0 !important;
+}
+
+header nav a[href="#request"]::after,
+header nav a[href="/#request"]::after,
+header a[href="#request"]::after,
+header a[href="/#request"]::after {
+  display: none;
+}
+
+header nav a[href="#request"]:hover,
+header nav a[href="/#request"]:hover,
+header a[href="#request"]:hover,
+header a[href="/#request"]:hover {
+  border-color: var(--gold-light) !important;
+  background:
+    linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--bronze) 100%) !important;
+  color: #111 !important;
+  transform: translateY(-2px);
+}
+
+/* Вторичные кнопки к портфолио */
+a[href="#portfolio"],
+a[href="/#portfolio"] {
+  position: relative;
+  overflow: hidden;
+  border-color: var(--gold) !important;
+  background: rgba(17, 17, 17, 0.82) !important;
+  color: var(--gold) !important;
+  box-shadow:
+    0 14px 34px rgba(0, 0, 0, 0.24),
+    0 0 22px rgba(200, 170, 120, 0.12);
+  transition:
+    transform 260ms ease,
+    background 260ms ease,
+    color 260ms ease,
+    box-shadow 260ms ease;
+}
+
+a[href="#portfolio"]:hover,
+a[href="/#portfolio"]:hover {
+  background: var(--gold) !important;
+  color: #111 !important;
+  transform: translateY(-2px);
+  box-shadow:
+    0 18px 46px rgba(0, 0, 0, 0.28),
+    0 0 30px rgba(200, 170, 120, 0.28);
 }
 
 /* Анимации появления */
@@ -181,47 +424,68 @@ header nav a:active {
   animation: reveal-up 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.reveal-delay-1 { animation-delay: 0.12s; }
-.reveal-delay-2 { animation-delay: 0.22s; }
-.reveal-delay-3 { animation-delay: 0.32s; }
-.reveal-delay-4 { animation-delay: 0.44s; }
+.reveal-delay-1 {
+  animation-delay: 0.12s;
+}
 
-/* Медленный панорамный дрифт бэкграундов */
+.reveal-delay-2 {
+  animation-delay: 0.22s;
+}
+
+.reveal-delay-3 {
+  animation-delay: 0.32s;
+}
+
+.reveal-delay-4 {
+  animation-delay: 0.44s;
+}
+
+/* Плавное появление секций, если добавишь className="section-reveal" */
+.section-reveal {
+  animation: section-reveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Медленный дрифт фоновых изображений */
 .image-drift {
   transform: scale(1.055);
   animation: image-drift 22s ease-in-out infinite alternate;
   will-change: transform;
 }
 
-/* Интерактивные карточки */
+/* Более живые карточки */
 .parallax-card {
   transform: translateY(0) scale(1);
   transition:
     transform 700ms cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 700ms cubic-bezier(0.16, 1, 0.3, 1),
-    filter 700ms cubic-bezier(0.16, 1, 0.3, 1);
+    filter 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 700ms cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
 }
 
 .parallax-card:hover {
-  transform: translateY(-8px) scale(1.01);
-  box-shadow: var(--shadow-premium);
+  transform: translateY(-8px) scale(1.012);
+  box-shadow:
+    var(--shadow-premium),
+    0 0 40px rgba(200, 170, 120, 0.14);
 }
 
 .parallax-card:hover img {
-  filter: saturate(1.06) contrast(1.03);
+  filter: saturate(1.08) contrast(1.04);
 }
 
 .premium-ring {
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.18),
-    0 24px 80px rgba(0, 0, 0, 0.14);
+    0 24px 80px rgba(0, 0, 0, 0.14),
+    0 0 34px rgba(200, 170, 120, 0.1);
 }
 
 .premium-ring-dark {
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.1),
-    0 28px 90px rgba(0, 0, 0, 0.28);
+    0 28px 90px rgba(0, 0, 0, 0.28),
+    0 0 34px rgba(200, 170, 120, 0.08);
 }
 
 .image-premium {
@@ -236,8 +500,52 @@ header nav a:active {
   filter: saturate(1.08) contrast(1.04);
 }
 
+/* Живые изображения в карточках */
+.group img {
+  transition:
+    transform 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 900ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.group:hover img {
+  transform: scale(1.045);
+}
+
+/* Лёгкий золотой акцент на карточках */
+.group {
+  transition:
+    transform 360ms ease,
+    filter 360ms ease;
+}
+
+.group:hover {
+  transform: translateY(-2px);
+}
+
+/* Формы */
+input,
+textarea,
+select {
+  transition:
+    border-color 260ms ease,
+    box-shadow 260ms ease,
+    background 260ms ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--gold) !important;
+  box-shadow:
+    0 0 0 3px rgba(200, 170, 120, 0.16),
+    0 12px 34px rgba(0, 0, 0, 0.08);
+}
+
+/* Фокус */
 :focus-visible {
-  outline: 2px solid rgba(184, 147, 95, 0.75);
+  outline: 2px solid rgba(200, 170, 120, 0.82);
   outline-offset: 4px;
 }
 
@@ -251,7 +559,7 @@ header nav a:active {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--bronze-light), var(--bronze));
+  background: linear-gradient(180deg, var(--gold-light), var(--bronze));
   border-radius: 999px;
   border: 2px solid #efe5d6;
 }
@@ -260,14 +568,32 @@ header nav a:active {
   background: var(--bronze-dark);
 }
 
+/* Keyframes */
 @keyframes reveal-up {
   from {
     opacity: 0;
     transform: translateY(28px);
+    filter: blur(4px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes section-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(36px);
+    filter: blur(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
   }
 }
 
@@ -275,27 +601,58 @@ header nav a:active {
   from {
     transform: scale(1.055) translate3d(-1.1%, -1.1%, 0);
   }
+
   to {
     transform: scale(1.11) translate3d(1.1%, 1.1%, 0);
   }
 }
 
+@keyframes page-glow {
+  from {
+    transform: translate3d(-2%, 0, 0) scale(1);
+    opacity: 0.74;
+  }
+
+  to {
+    transform: translate3d(2%, -3%, 0) scale(1.08);
+    opacity: 1;
+  }
+}
+
+/* Мобильная адаптация */
 @media (max-width: 767px) {
   body::before {
     background-size: 48px 48px;
     opacity: 0.55;
   }
 
-  .premium-glass {
+  body::after {
+    height: 360px;
+    opacity: 0.7;
+  }
+
+  .premium-glass,
+  .premium-glass-dark {
     backdrop-filter: blur(14px) saturate(125%);
     -webkit-backdrop-filter: blur(14px) saturate(125%);
   }
 
-  .parallax-card:hover {
+  .parallax-card:hover,
+  .group:hover {
     transform: none;
+  }
+
+  a[href="#request"],
+  a[href="/#request"],
+  a[href="#portfolio"],
+  a[href="/#portfolio"] {
+    box-shadow:
+      0 12px 28px rgba(0, 0, 0, 0.22),
+      0 0 18px rgba(200, 170, 120, 0.14);
   }
 }
 
+/* Уважение к настройкам пользователя */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -310,58 +667,15 @@ header nav a:active {
   }
 
   .reveal-up,
+  .section-reveal,
   .image-drift {
     animation: none;
   }
 
   .parallax-card,
-  .parallax-card:hover {
+  .parallax-card:hover,
+  .group,
+  .group:hover {
     transform: none;
   }
 }
-/* Видимые кнопки перехода к форме */
-a[href="#request"],
-a[href="/#request"] {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-
-  border: 1px solid var(--bronze-light) !important;
-  background:
-    linear-gradient(135deg, #111111 0%, #050505 100%) !important;
-  color: #c8aa78 !important;
-
-  box-shadow:
-    0 14px 36px rgba(0, 0, 0, 0.28),
-    0 0 0 1px rgba(200, 170, 120, 0.18),
-    0 0 24px rgba(200, 170, 120, 0.16);
-
-  transform: translateY(0);
-  transition:
-    transform 260ms ease,
-    background 260ms ease,
-    color 260ms ease,
-    border-color 260ms ease,
-    box-shadow 260ms ease;
-}
-
-/* Блик внутри кнопки */
-a[href="#request"]::before,
-a[href="/#request"]::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  z-index: -1;
-  background:
-    linear-gradient(
-      120deg,
-      transparent 0%,
-      transparent 35%,
-      rgba(200, 170, 120, 0.28) 48%,
-      transparent 62%,
-      transparent 100%
-    );
-  transform: translateX(-120%);
-  transition: transform 700ms ease;
-}
-
