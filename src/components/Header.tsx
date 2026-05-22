@@ -5,11 +5,11 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const navItems = [
-  { label: "Типологии", href: "/#typologies" },
-  { label: "Парные", href: "/baths" },
+  { label: "Комплексы", href: "/bath-complexes" },
+  { label: "Бани", href: "/baths" },
   { label: "Сауны", href: "/saunas" },
   { label: "Хамамы", href: "/hamams" },
-  { label: "Портфолио", href: "/#portfolio" },
+  { label: "Проекты", href: "/#portfolio" },
 ];
 
 export default function Header() {
@@ -29,11 +29,11 @@ export default function Header() {
     <header
       className={`fixed left-0 top-0 z-50 w-full transition-all duration-500 ease-in-out ${
         isScrolled
-          ? "bg-[#f8f5f0]/80 border-b border-black/5 py-4 backdrop-blur-md shadow-sm"
+          ? "bg-[#f8f5f0]/90 border-b border-black/5 py-4 backdrop-blur-md shadow-sm"
           : "bg-transparent py-6 md:py-8"
       }`}
     >
-      <div className="container-premium max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between">
         
         {/* Логотип бюро */}
         <Link
@@ -61,7 +61,7 @@ export default function Header() {
           </span>
         </Link>
 
-        {/* Навигация для десктопа */}
+        {/* Навигация для больших экранов */}
         <div className="hidden items-center gap-8 md:flex">
           <nav
             className={`flex items-center gap-6 lg:gap-8 font-light text-[11px] uppercase tracking-[0.2em] transition-colors duration-500 ${
@@ -83,37 +83,40 @@ export default function Header() {
             ))}
           </nav>
 
+          {/* Исправленная кнопка для десктопа */}
           <Link
             href="/#request"
             className={`border px-6 py-2.5 text-[10px] font-semibold uppercase tracking-widest transition-all duration-300 ${
               isScrolled
-                ? "border-[#121212] bg-[#121212] text-white hover:bg-[#8a6a43] hover:border-[#8a6a43]"
-                : "border-white/20 bg-transparent text-white hover:bg-white hover:text-black"
+                ? "border-[#8a6a43] bg-[#8a6a43] text-white hover:bg-[#6f5332] hover:border-[#6f5332]"
+                : "border-white/40 bg-transparent text-white hover:bg-white hover:text-black hover:border-white"
             }`}
           >
-            Инициировать проект
+            Оставить заявку
           </Link>
         </div>
 
-        {/* Навигация для мобильных устройств */}
-        <div className="flex items-center gap-4 md:hidden">
+        {/* Навигация для телефонов */}
+        <div className="flex items-center gap-5 md:hidden">
           <Link
             href="/#portfolio"
-            className={`text-[10px] uppercase tracking-widest font-light transition-colors duration-500 ${
-              isScrolled ? "text-black/60" : "text-white/60"
+            className={`text-[11px] uppercase tracking-widest font-light transition-colors duration-500 ${
+              isScrolled ? "text-black/70" : "text-white/80"
             }`}
           >
-            Работы
+            Проекты
           </Link>
+          
+          {/* Исправленная кнопка для мобильных */}
           <Link
             href="/#request"
-            className={`border px-4 py-2 text-[9px] font-semibold uppercase tracking-widest transition-all duration-300 ${
+            className={`border px-4 py-2 text-[10px] font-medium uppercase tracking-widest transition-all duration-300 ${
               isScrolled
-                ? "border-[#121212] bg-[#121212] text-white"
-                : "border-white/30 bg-white/10 text-white backdrop-blur-sm"
+                ? "border-[#8a6a43] bg-[#8a6a43] text-white"
+                : "border-white/40 bg-white/10 text-white backdrop-blur-sm"
             }`}
           >
-            Бриф
+            Заявка
           </Link>
         </div>
 
