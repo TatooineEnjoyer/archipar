@@ -28,7 +28,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed left-0 top-0 z-50 w-full transition-all duration-500 ease-in-out ${
+      className={`site-header fixed left-0 top-0 z-50 w-full transition-all duration-500 ease-in-out ${
         isScrolled
           ? "bg-[#f8f5f0]/45 border-b border-black/[0.03] py-4 backdrop-blur-sm shadow-none"
           : "bg-transparent py-6 md:py-8"
@@ -65,7 +65,7 @@ export default function Header() {
         {/* Навигация для больших экранов */}
         <div className="hidden items-center gap-8 md:flex">
           <nav
-            className={`flex items-center gap-6 text-[11px] font-light uppercase tracking-[0.2em] transition-colors duration-500 lg:gap-8 ${
+            className={`flex items-center gap-6 text-[14px] font-light uppercase tracking-[0.16em] transition-colors duration-500 lg:gap-8 ${
               isScrolled ? "text-black/70" : "text-white/70"
             }`}
           >
@@ -87,7 +87,7 @@ export default function Header() {
           {/* Кнопка для десктопа */}
           <Link
             href="/#request"
-            className={`border px-6 py-2.5 text-[10px] font-semibold uppercase tracking-widest transition-all duration-300 ${
+            className={`border px-6 py-2.5 text-[14px] font-semibold uppercase tracking-[0.14em] transition-all duration-300 ${
               isScrolled
                 ? "border-[#8a6a43] bg-[#8a6a43] text-white hover:border-[#6f5332] hover:bg-[#6f5332]"
                 : "border-white/40 bg-transparent text-white hover:border-white hover:bg-white hover:text-black"
@@ -101,7 +101,7 @@ export default function Header() {
         <div className="flex items-center gap-5 md:hidden">
           <Link
             href="/#portfolio"
-            className={`text-[11px] font-light uppercase tracking-widest transition-colors duration-500 ${
+            className={`text-[14px] font-light uppercase tracking-[0.14em] transition-colors duration-500 ${
               isScrolled ? "text-black/70" : "text-white/80"
             }`}
           >
@@ -111,7 +111,7 @@ export default function Header() {
           {/* Кнопка для мобильных */}
           <Link
             href="/#request"
-            className={`border px-4 py-2 text-[10px] font-medium uppercase tracking-widest transition-all duration-300 ${
+            className={`border px-4 py-2 text-[14px] font-medium uppercase tracking-[0.14em] transition-all duration-300 ${
               isScrolled
                 ? "border-[#8a6a43] bg-[#8a6a43] text-white"
                 : "border-white/40 bg-white/10 text-white backdrop-blur-sm"
