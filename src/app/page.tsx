@@ -1,5 +1,5 @@
-import Header from "@/components/Header";
-import ContactForm from "@/components/ContactForm";
+import Header from "../components/Header";
+import ContactForm from "../components/ContactForm";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -20,7 +20,7 @@ import {
 const trust = [
   "Архитектурный подход к wellness-пространствам",
   "Инженерия климата, влажности и безопасности",
-  "Реализация под ключ и авторский надзор",
+  "Реализация под ключ и авторский надзов",
   "Частные резиденции и коммерческие объекты",
 ];
 
@@ -264,7 +264,7 @@ export default function Home() {
                 alt="Атмосфера банного комплекса ARCHIPAR"
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover opacity-80 transition-transform duration-1000 hover:scale-103"
+                className="object-cover opacity-80 transition-transform duration-1000 hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
               <div className="absolute bottom-0 p-8 md:p-12 max-w-xl">
@@ -312,7 +312,7 @@ export default function Home() {
           </div>
 
           <div className="mt-16 grid gap-x-8 gap-y-12 md:grid-cols-2 xl:grid-cols-3">
-            {modules.map((item, index) => {
+            {modules.map((item) => {
               const Icon = item.icon;
               return (
                 <Link
@@ -326,7 +326,7 @@ export default function Home() {
                       alt={item.title}
                       fill
                       sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
-                      className="object-cover opacity-90 transition-all duration-700 ease-out group-hover:scale-103 group-hover:opacity-100"
+                      className="object-cover opacity-90 transition-all duration-700 ease-out group-hover:scale-105 group-hover:opacity-100"
                     />
                   </div>
 
@@ -437,7 +437,7 @@ export default function Home() {
             {/* Case 1 */}
             <div className="md:col-span-12 lg:col-span-8 group block cursor-pointer">
               <div className="relative h-[450px] overflow-hidden bg-black mb-4">
-                <Image src={cases[0].image} alt={cases[0].title} fill className="object-cover opacity-85 transition-transform duration-1000 ease-out group-hover:scale-102" />
+                <Image src={cases[0].image} alt={cases[0].title} fill sizes="(min-width: 1024px) 66vw, 100vw" className="object-cover opacity-85 transition-transform duration-1000 ease-out group-hover:scale-105" />
               </div>
               <p className="text-[10px] uppercase tracking-widest text-[#8a6a43] font-semibold">{cases[0].type}</p>
               <h3 className="font-serif text-3xl font-light tracking-tight mt-1">{cases[0].title}</h3>
@@ -446,7 +446,7 @@ export default function Home() {
             {/* Case 2 */}
             <div className="md:col-span-6 lg:col-span-4 group block cursor-pointer lg:mt-12">
               <div className="relative h-[500px] overflow-hidden bg-black mb-4">
-                <Image src={cases[1].image} alt={cases[1].title} fill className="object-cover opacity-85 transition-transform duration-1000 ease-out group-hover:scale-102" />
+                <Image src={cases[1].image} alt={cases[1].title} fill sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover opacity-85 transition-transform duration-1000 ease-out group-hover:scale-105" />
               </div>
               <p className="text-[10px] uppercase tracking-widest text-[#8a6a43] font-semibold">{cases[1].type}</p>
               <h3 className="font-serif text-2xl font-light tracking-tight mt-1">{cases[1].title}</h3>
@@ -455,16 +455,16 @@ export default function Home() {
             {/* Case 3 */}
             <div className="md:col-span-6 lg:col-span-4 group block cursor-pointer">
               <div className="relative h-[380px] overflow-hidden bg-black mb-4">
-                <Image src={cases[2].image} alt={cases[2].title} fill className="object-cover opacity-85 transition-transform duration-1000 ease-out group-hover:scale-102" />
+                <Image src={cases[2].image} alt={cases[2].title} fill sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover opacity-85 transition-transform duration-1000 ease-out group-hover:scale-105" />
               </div>
               <p className="text-[10px] uppercase tracking-widest text-[#8a6a43] font-semibold">{cases[2].type}</p>
               <h3 className="font-serif text-2xl font-light tracking-tight mt-1">{cases[2].title}</h3>
             </div>
 
             {/* Case 4 */}
-            <div className="md:col-span-12 lg:col-span-8 group block cursor-pointer md:mt-[-50px] lg:mt-0">
+            <div className="md:col-span-12 lg:col-span-8 group block cursor-pointer">
               <div className="relative h-[420px] overflow-hidden bg-black mb-4">
-                <Image src={cases[3].image} alt={cases[3].title} fill className="object-cover opacity-85 transition-transform duration-1000 ease-out group-hover:scale-102" />
+                <Image src={cases[3].image} alt={cases[3].title} fill sizes="(min-width: 1024px) 66vw, 100vw" className="object-cover opacity-85 transition-transform duration-1000 ease-out group-hover:scale-105" />
               </div>
               <p className="text-[10px] uppercase tracking-widest text-[#8a6a43] font-semibold">{cases[3].type}</p>
               <h3 className="font-serif text-3xl font-light tracking-tight mt-1">{cases[3].title}</h3>
@@ -558,7 +558,7 @@ function SectionIntro({
   eyebrow: string;
   title: string;
   text: string;
- }) {
+}) {
   return (
     <div className="max-w-3xl">
       <p className="mb-4 text-[10px] uppercase tracking-[0.4em] text-black/40 font-semibold">
@@ -597,7 +597,7 @@ function ImageCard({
           alt={title}
           fill
           sizes="(min-width: 1024px) 33vw, 100vw"
-          className="object-cover opacity-90 transition-all duration-1000 ease-out group-hover:scale-102 group-hover:opacity-100"
+          className="object-cover opacity-90 transition-all duration-1000 ease-out group-hover:scale-105 group-hover:opacity-100"
         />
         <div className="absolute top-4 left-4 bg-black/40 border border-white/10 px-3 py-1 text-[9px] uppercase tracking-widest text-white backdrop-blur-sm">
           {meta}
