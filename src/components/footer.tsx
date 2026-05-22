@@ -6,8 +6,11 @@ export default function Footer() {
 
   return (
     <footer className="w-full bg-[#111111] text-[#f4f0e8] pt-16 pb-8 mt-24 border-t border-white/5 relative overflow-hidden">
-      {/* Легкий фоновый градиент для глубины */}
-      <div className="absolute inset-0 bg-radial-gradient from-white/[0.02] to-transparent pointer-events-none" />
+      {/* Безопасный инлайн-градиент, который точно пропустит компилятор */}
+      <div 
+        className="absolute inset-0 pointer-events-none opacity-40" 
+        style={{ background: "radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 70%)" }}
+      />
 
       <div className="container-premium relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 pb-12 border-b border-white/10">
@@ -31,7 +34,7 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Блок 2: Направления (из вашего древа) */}
+          {/* Блок 2: Направления */}
           <div className="flex flex-col gap-4">
             <h4 className="font-serif text-sm tracking-[0.15em] text-[#b8935f] uppercase font-medium">
               Решения
