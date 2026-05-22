@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 
 type FormState = {
   name: string;
@@ -25,17 +25,14 @@ export default function ContactForm() {
   );
   const [statusText, setStatusText] = useState("");
 
-  function updateField(
-    field: keyof FormState,
-    value: string
-  ) {
+  function updateField(field: keyof FormState, value: string) {
     setForm((prev) => ({
       ...prev,
       [field]: value,
     }));
   }
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     setStatus("loading");
@@ -54,7 +51,9 @@ export default function ContactForm() {
 
       if (!response.ok || !data.success) {
         setStatus("error");
-        setStatusText(data.error?.message || data.message || "Не удалось отправить заявку");
+        setStatusText(
+          data.error?.message || data.message || "Не удалось отправить заявку"
+        );
         return;
       }
 
@@ -67,17 +66,20 @@ export default function ContactForm() {
     }
   }
 
+  const fieldClass =
+    "w-full rounded-full border border-[#8a6a43]/20 bg-[#f8f3ea]/80 px-5 py-4 text-sm text-[#111111] placeholder:text-black/35 outline-none transition duration-300 focus:border-[#8a6a43] focus:bg-white focus:shadow-[0_0_0_3px_rgba(200,170,120,0.14)]";
+
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-[34px] bg-white p-6 text-black shadow-2xl md:p-8"
+      className="mx-auto w-full max-w-[560px] rounded-[28px] border border-[#8a6a43]/18 bg-[#f4f0e8]/88 p-5 text-[#111111] shadow-[0_24px_70px_rgba(0,0,0,0.14)] backdrop-blur-md sm:p-6 md:rounded-[34px] md:p-8"
     >
-      <div className="grid gap-4">
+      <div className="grid w-full gap-4">
         <input
           required
           value={form.name}
           onChange={(event) => updateField("name", event.target.value)}
-          className="rounded-full border border-black/10 px-5 py-4 outline-none transition focus:border-[#8a6a43]"
+          className={fieldClass}
           placeholder="Ваше имя"
         />
 
@@ -85,21 +87,21 @@ export default function ContactForm() {
           required
           value={form.phone}
           onChange={(event) => updateField("phone", event.target.value)}
-          className="rounded-full border border-black/10 px-5 py-4 outline-none transition focus:border-[#8a6a43]"
+          className={fieldClass}
           placeholder="Телефон"
         />
 
         <input
           value={form.email}
           onChange={(event) => updateField("email", event.target.value)}
-          className="rounded-full border border-black/10 px-5 py-4 outline-none transition focus:border-[#8a6a43]"
+          className={fieldClass}
           placeholder="E-mail"
         />
 
         <select
           value={form.interest}
           onChange={(event) => updateField("interest", event.target.value)}
-          className="rounded-full border border-black/10 px-5 py-4 outline-none transition focus:border-[#8a6a43]"
+          className={`${fieldClass} appearance-none pr-10`}
         >
           <option>Банный комплекс под ключ</option>
           <option>Частный банный комплекс</option>
@@ -114,14 +116,14 @@ export default function ContactForm() {
         <textarea
           value={form.message}
           onChange={(event) => updateField("message", event.target.value)}
-          className="min-h-32 rounded-[24px] border border-black/10 px-5 py-4 outline-none transition focus:border-[#8a6a43]"
+          className="min-h-32 w-full resize-none rounded-[24px] border border-[#8a6a43]/20 bg-[#f8f3ea]/80 px-5 py-4 text-sm text-[#111111] placeholder:text-black/35 outline-none transition duration-300 focus:border-[#8a6a43] focus:bg-white focus:shadow-[0_0_0_3px_rgba(200,170,120,0.14)]"
           placeholder="Коротко о задаче"
         />
 
         <button
           disabled={status === "loading"}
           type="submit"
-          className="rounded-full bg-black px-7 py-4 text-sm font-semibold text-white transition hover:bg-[#8a6a43] disabled:cursor-not-allowed disabled:opacity-50"
+          className="mt-1 w-full rounded-full border border-[#8a6a43] bg-[#111111] px-7 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-[#c8aa78] shadow-[0_16px_42px_rgba(0,0,0,0.22)] transition duration-300 hover:bg-[#8a6a43] hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
         >
           {status === "loading" ? "Отправляем..." : "Заказать консультацию"}
         </button>
@@ -140,7 +142,7 @@ export default function ContactForm() {
           </p>
         )}
 
-        <p className="text-xs leading-relaxed text-black/40">
+        <p className="text-center text-xs leading-relaxed text-black/40 sm:text-left">
           Нажимая кнопку, вы соглашаетесь на обработку персональных данных.
         </p>
       </div>
