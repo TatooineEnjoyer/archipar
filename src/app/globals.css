@@ -763,3 +763,24 @@ select:focus {
     transform: none;
   }
 }
+.site-header a.header-request-link {
+  border-color: var(--header-request-border) !important;
+  background: var(--header-request-bg) !important;
+  color: var(--header-request-color) !important;
+  box-shadow: var(--header-request-shadow) !important;
+  border-radius: 0 !important;
+  transform: translateY(0);
+}
+
+.site-header a.header-request-link:hover,
+.site-header a.header-request-link:focus-visible {
+  border-color: var(--header-request-border) !important;
+  background: var(--header-request-hover-bg) !important;
+  color: var(--header-request-hover-color) !important;
+  transform: translateY(-2px);
+}
+
+.site-header a.header-request-link::before,
+.site-header a.header-request-link::after {
+  display: none !important;
+}
