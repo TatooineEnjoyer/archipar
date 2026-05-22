@@ -158,9 +158,10 @@ export default function Home() {
                 </Link>
                 <Link
                   href="#portfolio"
-                  className="inline-flex items-center justify-center gap-3 border border-white/20 bg-transparent px-8 py-4 text-xs font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:bg-white hover:text-black"
+                  className="inline-flex items-center justify-center gap-3 border border-[#c8aa78] bg-transparent px-8 py-4 text-xs font-semibold uppercase tracking-widest text-[#c8aa78] transition-all duration-300 hover:bg-[#c8aa78] hover:text-black"
                 >
                   Смотреть избранные работы
+                </Link>
                 </Link>
               </div>
             </div>
