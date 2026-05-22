@@ -135,7 +135,7 @@ header nav a:active {
   box-shadow: 0 12px 34px rgba(138, 106, 67, 0.28);
 }
 
-/* Универсальные кнопки, можно использовать в компонентах */
+/* Универсальные кнопки */
 .btn-premium-light {
   background: rgba(255, 255, 255, 0.94);
   color: #111;
@@ -334,4 +334,13 @@ header nav a:active {
   .parallax-card:hover {
     transform: none;
   }
+}
+
+/* Связываем встроенные классы Tailwind с кастомными шрифтами напрямую */
+.font-serif {
+  font-family: var(--font-display), serif !important;
+}
+
+.font-sans {
+  font-family: var(--font-body), sans-serif !important;
 }
