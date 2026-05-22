@@ -64,6 +64,8 @@ h6 {
   font-family: var(--font-display), Arial, sans-serif;
   font-weight: 300;
   text-wrap: balance;
+  letter-spacing: 0.06em; /* Делает заголовки визуально шире и «дороже» */
+  text-transform: uppercase; /* Переводит заголовки в стильный верхний регистр */
 }
 
 p {
@@ -135,7 +137,7 @@ header nav a:active {
   box-shadow: 0 12px 34px rgba(138, 106, 67, 0.28);
 }
 
-/* Универсальные кнопки */
+/* Универсальные кнопки, можно использовать в компонентах */
 .btn-premium-light {
   background: rgba(255, 255, 255, 0.94);
   color: #111;
@@ -230,7 +232,7 @@ header nav a:active {
 
 .premium-ring-dark {
   box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
     0 28px 90px rgba(0, 0, 0, 0.28);
 }
 
@@ -336,9 +338,10 @@ header nav a:active {
   }
 }
 
-/* Связываем встроенные классы Tailwind с кастомными шрифтами напрямую */
+/* ПРИНУДИТЕЛЬНОЕ ПЕРЕОПРЕДЕЛЕНИЕ ШРИФТОВ ДЛЯ TAILWIND (Без файлов конфига) */
 .font-serif {
-  font-family: var(--font-display), serif !important;
+  font-family: var(--font-display), sans-serif !important;
+  letter-spacing: 0.08em !important;
 }
 
 .font-sans {
