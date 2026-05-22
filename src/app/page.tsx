@@ -122,7 +122,7 @@ const cases = [
   },
 ];
 
-const process = [
+const processSteps = [
   {
     title: "Консультация и аудит объекта",
     text: "Разбираем задачу, состав семьи или поток гостей, ограничения помещения, инженерные вводы и желаемый сценарий отдыха.",
@@ -150,7 +150,7 @@ const process = [
   },
 ];
 
-const engineering = [
+const engineeringFeatures = [
   "Вентиляция, залповое проветривание и удаление влаги",
   "Сценарии пара, температуры и влажности",
   "Гидроизоляция, водоотведение и безопасные влажные зоны",
@@ -179,7 +179,7 @@ export default function Home() {
           className="image-drift object-cover opacity-90"
         />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_66%_18%,rgba(255,255,255,0.16),transparent_30%),linear-gradient(90deg,rgba(0,0,0,0.76),rgba(0,0,0,0.35),rgba(0,0,0,0.16))]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/[0.58] via-black/[0.12] to-transparent opacity-90 transition duration-500 group-hover:opacity-100" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/[0.58] via-black/[0.12] to-transparent opacity-90" />
 
         <div className="container-premium relative z-10 flex min-h-screen items-end pb-10 pt-32 md:pb-14">
           <div className="w-full">
@@ -405,7 +405,7 @@ export default function Home() {
               </div>
 
               <div className="grid gap-3 md:grid-cols-2">
-                {engineering.map((item) => (
+                {engineeringFeatures.map((item) => (
                   <div key={item} className="rounded-[22px] border border-white/10 bg-white/[0.04] p-5 text-sm leading-relaxed text-white/[0.72]">
                     {item}
                   </div>
@@ -425,7 +425,7 @@ export default function Home() {
           />
 
           <div className="mt-10 grid gap-3">
-            {process.map((item, index) => {
+            {processSteps.map((item, index) => {
               const Icon = item.icon;
 
               return (
