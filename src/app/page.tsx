@@ -162,7 +162,6 @@ export default function Home() {
                 >
                   Смотреть избранные работы
                 </Link>
-                </Link>
               </div>
             </div>
 
