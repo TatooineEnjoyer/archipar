@@ -123,10 +123,11 @@ export default function Home() {
           fill
           priority
           sizes="100vw"
-          className="image-drift object-cover opacity-35 mix-blend-luminosity"
+          {/* Убрали mix-blend-luminosity (черно-белый фильтр), оставили только мягкое затемнение через opacity */}
+          className="image-drift object-cover opacity-20"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/60 to-transparent" />
 
         <div className="container-premium relative z-10 w-full">
           <div className="mb-8 inline-flex items-center gap-3">
@@ -147,6 +148,7 @@ export default function Home() {
               </p>
 
               <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+                {/* Вернули шикарную золотую заливку кнопке перехода на банные комплексы */}
                 <Link
                   href="/bath-complexes"
                   className="inline-flex items-center justify-center gap-3 border border-[#c8aa78] bg-[#c8aa78] px-8 py-4 text-xs font-semibold uppercase tracking-widest text-black transition-all duration-300 hover:bg-transparent hover:text-[#c8aa78]"
@@ -236,7 +238,7 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* Форматы (Типологии) - Обновленные карточки */}
+      {/* Форматы (Типологии) - Карточки */}
       <section id="typologies" className="bg-[#111111] py-24 md:py-32 border-t border-white/5">
         <Container>
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
@@ -304,7 +306,8 @@ export default function Home() {
                 alt="Техническая часть банного комплекса"
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover opacity-50 mix-blend-luminosity"
+                {/* Оставили техническое фото цветным, но глубоко приглушенным */}
+                className="object-cover opacity-25"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
               <div className="absolute bottom-8 left-8 right-8 border-l-2 border-[#c8aa78] bg-black/80 p-6 backdrop-blur-md">
@@ -430,7 +433,8 @@ function CaseCard({ item, className, imageHeight, titleSize }: { item: any; clas
           alt={item.title}
           fill
           sizes="(min-width: 1024px) 66vw, 100vw"
-          className="object-cover opacity-75 transition-transform duration-1000 ease-out group-hover:scale-105 group-hover:opacity-100"
+          {/* Поменяли черно-белый эффект на легкое цветное приглушение */}
+          className="object-cover opacity-60 transition-all duration-1000 ease-out group-hover:scale-105 group-hover:opacity-100"
         />
       </div>
       <p className="text-[10px] font-semibold uppercase tracking-widest text-[#c8aa78]">
@@ -452,7 +456,8 @@ function ImageCard({ title, text, image, href, meta, index }: { title: string; t
           alt={title}
           fill
           sizes="(min-width: 1024px) 33vw, 100vw"
-          className="object-cover opacity-60 transition-all duration-1000 ease-out group-hover:scale-105 group-hover:opacity-100"
+          {/* Убрали mix-blend-luminosity, сделали глубокое цветное приглушение */}
+          className="object-cover opacity-50 transition-all duration-1000 ease-out group-hover:scale-105 group-hover:opacity-90"
         />
         <div className="absolute left-6 top-6 border border-[#c8aa78]/30 bg-[#121212]/80 px-3 py-1.5 text-[9px] uppercase tracking-widest text-[#c8aa78] backdrop-blur-md">
           {meta}
