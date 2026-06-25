@@ -58,7 +58,7 @@ const engineeringCore = [
   },
   {
     title: "Вентиляция «Второе дыхание»",
-    text: "Подача свежего очищенного воздуха напрямую к лицу гостя во время парения. Насыщение кислородом без падения температуры в парной.",
+    text: "Подача свежего очищенного воздуха напрямую к гостям во время парения. Насыщение кислородом без падения температуры в парной.",
     icon: Wind,
   },
   {
@@ -73,7 +73,7 @@ export default function ProductPage({ product }: { product: ProductPageData }) {
     <main className="bg-[#fcfaf7] text-[#121212] antialiased selection:bg-[#8a6a43] selection:text-white">
       <Header />
 
-      {/* Hero-секция: Высокий стиль и кинематографичность */}
+      {/* Hero-секция: Красиво жить не запретишь */}
       <section className="relative flex min-h-[92vh] items-end overflow-hidden bg-[#0a0a0a] pb-16 pt-32 md:pb-24">
         <Image
           src={product.heroImage}
@@ -81,7 +81,7 @@ export default function ProductPage({ product }: { product: ProductPageData }) {
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-35 mix-blend-luminosity transition-transform duration-1000 scale-105 hover:scale-100"
+          className="object-cover opacity-20 transition-opacity duration-700 scale-105 hover:scale-100"
         />
 
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/50 to-transparent" />
