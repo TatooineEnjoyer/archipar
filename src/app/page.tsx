@@ -36,7 +36,7 @@ const cases = [
   {
     title: "Гостевой банный комплекс из сосны",
     type: "Гостевой формат · Алтай",
-    image: "/images/cases/case-05.jfif",
+    image: "/images/cases/case-04.jpg",
   },
 ];
 
