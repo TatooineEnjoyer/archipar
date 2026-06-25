@@ -112,24 +112,25 @@ const methodSteps = [
 
 export default function Home() {
   return (
-    <main className="bg-[#f8f5f0] text-[#121212] antialiased selection:bg-[#8a6a43] selection:text-white">
+    <main className="bg-[#0a0a0a] text-[#ffffff] antialiased selection:bg-[#c8aa78] selection:text-black">
       <Header />
 
-      <section className="relative flex min-h-screen items-end overflow-hidden bg-[#121212] pb-16 pt-32 md:pb-24">
+      {/* Hero Section */}
+      <section className="relative flex min-h-screen items-end overflow-hidden bg-[#0a0a0a] pb-16 pt-32 md:pb-24">
         <Image
           src="/images/hero/hero-main.jpg"
           alt="Банные комплексы ARCHIPAR"
           fill
           priority
           sizes="100vw"
-          className="image-drift object-cover opacity-45 mix-blend-luminosity"
+          className="image-drift object-cover opacity-35 mix-blend-luminosity"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/35 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/50 to-transparent" />
 
         <div className="container-premium relative z-10 w-full">
           <div className="mb-8 inline-flex items-center gap-3">
-            <span className="border border-white/10 bg-white/5 px-4 py-1.5 text-[10px] uppercase tracking-[0.3em] text-white/80 backdrop-blur-sm">
+            <span className="border border-[#c8aa78]/30 bg-[#c8aa78]/10 px-4 py-1.5 text-[10px] uppercase tracking-[0.3em] text-[#c8aa78] backdrop-blur-sm">
               Проектирование · Строительство · Запуск
             </span>
           </div>
@@ -141,112 +142,119 @@ export default function Home() {
                 <span className="italic text-[#c8aa78]">и зоны отдыха под ключ</span>
               </h1>
 
-              <p className="mt-8 max-w-xl text-base font-light leading-relaxed text-white/68 md:text-lg">
-                ARCHIPAR проектирует и строит банные пространства, где красиво выглядит каждая деталь и всё удобно работает каждый день: пар, тепло, вода, воздух и свет.
+              <p className="mt-8 max-w-xl text-base font-light leading-relaxed text-white/70 md:text-lg">
+                ARCHIPAR проектирует и строит премиальные пространства, где эстетика неотделима от правильной инженерии: пар, тепло, вода, воздух и свет.
               </p>
 
               <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                 <Link
-                  href="#request"
-                  className="inline-flex items-center justify-center gap-3 border border-[#c8aa78] bg-black px-8 py-4 text-xs font-semibold uppercase tracking-widest text-[#c8aa78] transition-all duration-300 hover:bg-[#c8aa78] hover:text-black"
+                  href="/bath-complexes"
+                  className="inline-flex items-center justify-center gap-3 border border-[#c8aa78] bg-[#c8aa78] px-8 py-4 text-xs font-semibold uppercase tracking-widest text-black transition-all duration-300 hover:bg-transparent hover:text-[#c8aa78]"
                 >
-                  Заказать проект
+                  Наши банные комплексы
                   <ArrowRight className="h-4 w-4" />
                 </Link>
 
                 <Link
                   href="#portfolio"
-                  className="inline-flex items-center justify-center gap-3 border border-[#c8aa78] bg-black px-8 py-4 text-xs font-semibold uppercase tracking-widest text-[#c8aa78] transition-all duration-300 hover:bg-[#c8aa78] hover:text-black"
+                  className="inline-flex items-center justify-center gap-3 border border-white/20 bg-transparent px-8 py-4 text-xs font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:border-[#c8aa78] hover:text-[#c8aa78]"
                 >
                   Смотреть избранные работы
                 </Link>
               </div>
             </div>
 
-            <div className="hidden border border-white/10 bg-black/35 p-6 text-xs font-light tracking-wide text-white/58 backdrop-blur-md lg:block">
+            <div className="hidden border-l-2 border-[#c8aa78] bg-white/[0.02] p-6 text-xs font-light tracking-wide text-white/60 backdrop-blur-md lg:block">
               <div className="border-b border-white/10 pb-4">
                 <span className="mb-1 block font-serif text-lg text-[#c8aa78]">
                   Всё в одних руках
                 </span>
                 Проект, материалы, монтаж, настройка и запуск без разрыва между дизайном и работами на объекте.
               </div>
-
               <div className="pt-4">
                 <span className="mb-1 block font-serif text-lg text-[#c8aa78]">
-                  Комфорт без духоты
+                  Идеальный климат
                 </span>
-                Сразу думаем о вентиляции, влажности, нагреве и доступе к оборудованию.
+                Сразу закладываем правильную вентиляцию, влажность и доступ к техническим узлам.
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-[#f8f5f0] py-24 md:py-32">
+      {/* О нас - Параллельная верстка */}
+      <section className="bg-[#0a0a0a] py-24 md:py-36 border-b border-white/5 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-[#111111] -skew-x-12 translate-x-32" />
         <Container>
-          <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.2fr]">
+          <div className="relative z-10 grid items-center gap-16 lg:grid-cols-[1fr_1.2fr]">
             <div>
-              <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.4em] text-black/40">
-                О нас
+              <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.4em] text-[#c8aa78]">
+                Философия ARCHIPAR
               </p>
-
-              <h2 className="font-serif text-3xl font-extralight leading-snug tracking-tight text-[#121212] sm:text-4xl md:text-5xl">
-                Хорошая баня — это не только красивая отделка.
+              <h2 className="font-serif text-3xl font-extralight leading-snug tracking-tight text-white sm:text-4xl md:text-5xl">
+                Хорошая баня — это не только дорогая отделка.
               </h2>
             </div>
 
-            <div className="space-y-6 text-base font-light leading-relaxed text-black/70 lg:pt-8">
+            <div className="space-y-6 text-base font-light leading-relaxed text-white/70 border-l border-white/10 pl-8">
               <p>
-                Часто бывает так: сначала рисуют красивую картинку, а потом пытаются спрятать вентиляцию, воду, электрику и оборудование. В итоге приходится жертвовать либо видом, либо удобством.
+                Часто бывает так: сначала рисуют красивую картинку, а потом пытаются вписать вентиляцию, сливы и печь. В итоге приходится жертвовать либо эстетикой, либо правильным паром.
               </p>
-
-              <p className="font-medium text-[#121212]">
-                Мы делаем иначе. Сначала понимаем, как вы будете пользоваться баней, а потом собираем планировку, материалы и техническую часть так, чтобы объект был красивым, понятным и надёжным в работе.
+              <p className="font-medium text-white">
+                Мы делаем иначе. Мы создаем архитектуру микроклимата, где техническая безупречность формирует премиальный внешний вид объекта.
               </p>
             </div>
           </div>
         </Container>
       </section>
 
-      <section id="portfolio" className="border-y border-black/5 bg-[#f0eae1] py-24 md:py-32">
+      {/* Портфолио - Асимметричная сетка */}
+      <section id="portfolio" className="bg-[#0a0a0a] py-24 md:py-32">
         <Container>
-          <div className="mb-16 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div className="mb-20 flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <SectionIntro
               eyebrow="Избранные работы"
-              title="Что уже построили"
-              text="Показываем разные форматы: отдельные бани, хамамы, домашние парные и гостевые банные комплексы."
+              title="Наши реализованные проекты"
+              text="Показываем форматы, в которых мы работаем: от домашних хамамов до полномасштабных банных комплексов."
             />
 
             <Link
-              href="?section=request#request"
-              className="inline-flex items-center gap-2 border-b border-[#8a6a43] bg-transparent pb-1 text-xs font-semibold uppercase tracking-widest text-[#8a6a43] shadow-none transition-colors hover:text-black"
+              href="/bath-complexes"
+              className="inline-flex items-center gap-2 border-b border-[#c8aa78] bg-transparent pb-1 text-xs font-semibold uppercase tracking-widest text-[#c8aa78] transition-colors hover:text-white"
             >
-              Обсудить похожий проект
-              <ArrowUpRight className="h-3 w-3" />
+              Изучить комплексы
+              <ArrowUpRight className="h-4 w-4" />
             </Link>
           </div>
 
-          <div className="grid items-start gap-12 md:grid-cols-12">
-            <CaseCard item={cases[0]} className="md:col-span-12 lg:col-span-8" imageHeight="h-[480px]" titleSize="text-3xl" />
-
-            <CaseCard item={cases[1]} className="md:col-span-6 lg:col-span-4 lg:mt-16" imageHeight="h-[414px]" titleSize="text-2xl" />
-
-            <CaseCard item={cases[2]} className="md:col-span-6 lg:col-span-4" imageHeight="h-[414px]" titleSize="text-2xl" />
-
-            <CaseCard item={cases[3]} className="md:col-span-12 lg:col-span-8 lg:mt-0" imageHeight="h-[480px]" titleSize="text-3xl" />
+          <div className="grid items-start gap-8 md:grid-cols-12">
+            <CaseCard item={cases[0]} className="md:col-span-12 lg:col-span-7" imageHeight="h-[500px]" titleSize="text-3xl" />
+            <CaseCard item={cases[1]} className="md:col-span-6 lg:col-span-5 lg:mt-32" imageHeight="h-[400px]" titleSize="text-2xl" />
+            <CaseCard item={cases[2]} className="md:col-span-6 lg:col-span-5" imageHeight="h-[400px]" titleSize="text-2xl" />
+            <CaseCard item={cases[3]} className="md:col-span-12 lg:col-span-7 lg:-mt-20" imageHeight="h-[500px]" titleSize="text-3xl" />
           </div>
         </Container>
       </section>
 
-      <section id="typologies" className="bg-[#f8f5f0] py-24 md:py-32">
+      {/* Форматы (Типологии) - Обновленные карточки */}
+      <section id="typologies" className="bg-[#111111] py-24 md:py-32 border-t border-white/5">
         <Container>
-          <SectionIntro
-            eyebrow="Форматы"
-            title="Под разные задачи и дома"
-            text="Можно сделать отдельную баню на участке, встроенную банную зону внутри дома или гостевой комплекс для нескольких человек."
-          />
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+            <SectionIntro
+              eyebrow="Форматы объектов"
+              title="Проектируем под разные задачи"
+              text="Отдельное здание на участке, встроенная зона или коммерческий SPA-объект."
+            />
+            <Link
+              href="/bath-complexes"
+              className="inline-flex items-center justify-center gap-3 bg-[#c8aa78] px-8 py-4 text-xs font-semibold uppercase tracking-widest text-black transition-all hover:bg-white"
+            >
+              Смотреть варианты
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
 
-          <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {typologies.map((item, index) => (
               <ImageCard key={item.title} {...item} index={index} />
             ))}
@@ -254,8 +262,9 @@ export default function Home() {
         </Container>
       </section>
 
-      <section id="anatomy" className="relative overflow-hidden bg-[#121212] py-24 text-white md:py-32">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(138,106,67,0.18),transparent_50%)]" />
+      {/* Анатомия */}
+      <section id="anatomy" className="relative overflow-hidden bg-[#0a0a0a] py-24 text-white md:py-32">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(200,170,120,0.12),transparent_50%)]" />
 
         <Container>
           <div className="relative z-10 grid gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
@@ -263,29 +272,24 @@ export default function Home() {
               <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.35em] text-[#c8aa78]">
                 Что внутри
               </p>
-
               <h2 className="font-serif text-4xl font-extralight leading-[1.1] tracking-tight md:text-5xl lg:text-6xl">
                 Красиво снаружи, <br />
                 <span className="italic text-[#c8aa78]">правильно внутри</span>
               </h2>
-
-              <p className="mt-8 max-w-xl text-sm font-light leading-relaxed text-white/62 md:text-base">
-                За деревом, камнем и светом всегда есть важная техническая часть. Мы заранее продумываем воздух, влагу, нагрев, слив, электрику и доступ к обслуживанию.
+              <p className="mt-8 max-w-xl text-sm font-light leading-relaxed text-white/60 md:text-base">
+                За деревом, камнем и светом всегда есть сложная инженерная часть. Мы заранее проектируем потоки воздуха, гидроизоляцию и доступ к технике.
               </p>
 
               <div className="mt-12 grid gap-6 sm:grid-cols-2">
                 {anatomy.map((item) => {
                   const Icon = item.icon;
-
                   return (
-                    <div key={item.title} className="border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm transition-all duration-300 hover:border-[#c8aa78]/50 hover:bg-white/[0.06]">
+                    <div key={item.title} className="border border-white/5 bg-white/[0.02] p-6 backdrop-blur-sm transition-all duration-300 hover:border-[#c8aa78]/40 hover:bg-white/[0.04]">
                       <Icon className="mb-4 h-5 w-5 text-[#c8aa78]" />
-
                       <h3 className="mb-2 font-serif text-lg font-light text-white">
                         {item.title}
                       </h3>
-
-                      <p className="text-xs font-light leading-relaxed text-white/55">
+                      <p className="text-xs font-light leading-relaxed text-white/50">
                         {item.text}
                       </p>
                     </div>
@@ -300,18 +304,15 @@ export default function Home() {
                 alt="Техническая часть банного комплекса"
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover opacity-68 mix-blend-luminosity"
+                className="object-cover opacity-50 mix-blend-luminosity"
               />
-
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-
-              <div className="absolute bottom-8 left-8 right-8 border border-white/10 bg-black/65 p-6 backdrop-blur-md">
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+              <div className="absolute bottom-8 left-8 right-8 border-l-2 border-[#c8aa78] bg-black/80 p-6 backdrop-blur-md">
                 <span className="mb-2 block text-[9px] font-semibold uppercase tracking-widest text-[#c8aa78]">
-                  Важные детали
+                  Инженерные решения
                 </span>
-
-                <p className="text-xs font-light leading-relaxed text-white/82">
-                  Хорошая баня не должна быть душной, сырой или сложной в уходе. Поэтому мы сразу закладываем вентиляцию, слив, доступ к оборудованию и понятное управление.
+                <p className="text-xs font-light leading-relaxed text-white/80">
+                  Правильная баня не может быть душной или сложной в уборке. Мы закладываем автоматизацию управления, сливы и систему "второе дыхание".
                 </p>
               </div>
             </div>
@@ -319,43 +320,39 @@ export default function Home() {
         </Container>
       </section>
 
-      <section id="method" className="bg-[#f8f5f0] py-24 md:py-32">
+      {/* Метод */}
+      <section id="method" className="bg-[#111111] py-24 md:py-32 border-t border-white/5">
         <Container>
-          <div className="grid items-end gap-12 border-b border-black/10 pb-12 lg:grid-cols-[0.8fr_1.2fr]">
+          <div className="grid items-end gap-12 border-b border-white/10 pb-12 lg:grid-cols-[0.8fr_1.2fr]">
             <SectionIntro
               eyebrow="Работа"
               title="От идеи до запуска"
-              text="Мы не просто отдаём чертежи. Ведём проект до готового результата, чтобы на объекте не появлялись случайные решения и переделки."
+              text="Мы не просто отдаём чертежи. Мы ведём проект до готового результата, предотвращая переделки на этапе стройки."
             />
-
-            <div className="flex w-full max-w-sm items-center justify-between gap-4 bg-[#121212] p-6 text-xs font-light uppercase tracking-widest text-white lg:justify-self-end">
+            <div className="flex w-full max-w-sm items-center justify-between gap-4 bg-[#c8aa78] p-6 text-xs font-semibold uppercase tracking-widest text-black lg:justify-self-end">
               <span className="flex items-center gap-2">
-                <Sparkles className="h-4 w-4 text-[#c8aa78]" />
+                <Sparkles className="h-4 w-4" />
                 Проверяем перед сдачей
               </span>
-              <span className="text-[#c8aa78]">100%</span>
+              <span>100%</span>
             </div>
           </div>
 
           <div className="mt-16 grid gap-8 md:grid-cols-2 xl:grid-cols-4">
             {methodSteps.map((item, index) => {
               const Icon = item.icon;
-
               return (
-                <div key={item.title} className="group relative border-l border-black/10 pl-6 pt-2 transition-colors duration-300 hover:border-[#8a6a43]">
-                  <span className="mb-4 block font-serif text-sm italic text-black/30">
+                <div key={item.title} className="group relative border-l border-white/10 pl-6 pt-2 transition-colors duration-300 hover:border-[#c8aa78]">
+                  <span className="mb-4 block font-serif text-sm italic text-[#c8aa78]/50">
                     0{index + 1}
                   </span>
-
                   <div className="mb-3 flex items-center gap-2">
-                    <Icon className="h-4 w-4 text-[#8a6a43]" />
-
-                    <h3 className="font-serif text-xl font-light tracking-tight text-[#121212]">
+                    <Icon className="h-4 w-4 text-[#c8aa78]" />
+                    <h3 className="font-serif text-xl font-light tracking-tight text-white">
                       {item.title}
                     </h3>
                   </div>
-
-                  <p className="text-xs font-light leading-relaxed text-black/60">
+                  <p className="text-xs font-light leading-relaxed text-white/50">
                     {item.text}
                   </p>
                 </div>
@@ -365,31 +362,30 @@ export default function Home() {
         </Container>
       </section>
 
-      <section id="request" className="relative overflow-hidden border-t border-white/5 bg-[#121212] py-24 text-white md:py-32">
+      {/* Заявка */}
+      <section id="request" className="relative overflow-hidden border-t border-white/5 bg-[#0a0a0a] py-24 text-white md:py-32">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#c8aa78]/10 blur-[120px] rounded-full" />
         <Container>
-          <div className="relative z-10 grid gap-16 lg:grid-cols-2 lg:items-start">
+          <div className="relative z-10 grid gap-16 lg:grid-cols-2 lg:items-center">
             <div>
               <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.35em] text-[#c8aa78]">
                 Заявка
               </p>
-
               <h2 className="font-serif text-4xl font-extralight leading-[1.1] tracking-tight md:text-5xl lg:text-6xl">
                 Расскажите, <br />
-                <span className="italic text-[#c8aa78]">какую баню хотите</span>
+                <span className="italic text-[#c8aa78]">какой объект нужен</span>
               </h2>
-
-              <p className="mt-6 max-w-md text-sm font-light leading-relaxed text-white/62 md:text-base">
-                Оставьте контакты — мы свяжемся, зададим несколько вопросов по объекту и подскажем, с чего лучше начать.
+              <p className="mt-6 max-w-md text-sm font-light leading-relaxed text-white/60 md:text-base">
+                Оставьте контакты — мы свяжемся с вами, зададим вопросы по участку или помещению и предложим оптимальный формат.
               </p>
-
-              <div className="mt-12 space-y-4 border-l border-white/10 pl-6 text-xs font-light uppercase tracking-wider text-white/45">
-                <p>• Посмотрим технические условия объекта</p>
-                <p>• Подскажем подходящий формат банной зоны</p>
-                <p>• Объясним порядок работ простым языком</p>
+              <div className="mt-12 space-y-4 border-l border-[#c8aa78]/50 pl-6 text-xs font-light uppercase tracking-wider text-white/50">
+                <p>• Оценим технические условия объекта</p>
+                <p>• Подберем конфигурацию банной зоны</p>
+                <p>• Разработаем концепцию и дорожную карту работ</p>
               </div>
             </div>
 
-            <div className="border border-white/10 bg-white/[0.03] p-8 backdrop-blur-sm md:p-10">
+            <div className="border border-white/10 bg-[#111111] p-8 md:p-12 shadow-2xl">
               <ContactForm />
             </div>
           </div>
@@ -409,117 +405,72 @@ function Container({ children }: { children: ReactNode }) {
   );
 }
 
-function SectionIntro({
-  eyebrow,
-  title,
-  text,
-}: {
-  eyebrow: string;
-  title: string;
-  text: string;
-}) {
+function SectionIntro({ eyebrow, title, text }: { eyebrow: string; title: string; text: string }) {
   return (
     <div className="max-w-3xl">
-      <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.4em] text-black/40">
+      <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.4em] text-[#c8aa78]">
         {eyebrow}
       </p>
-
-      <h2 className="font-serif text-4xl font-extralight leading-[1.1] tracking-tight text-[#121212] md:text-5xl lg:text-6xl">
+      <h2 className="font-serif text-4xl font-extralight leading-[1.1] tracking-tight text-white md:text-5xl lg:text-6xl">
         {title}
       </h2>
-
-      <p className="mt-6 max-w-xl text-sm font-light leading-relaxed text-black/60 md:text-base">
+      <p className="mt-6 max-w-xl text-sm font-light leading-relaxed text-white/60 md:text-base">
         {text}
       </p>
     </div>
   );
 }
 
-function CaseCard({
-  item,
-  className,
-  imageHeight,
-  titleSize,
-}: {
-  item: {
-    title: string;
-    type: string;
-    image: string;
-  };
-  className: string;
-  imageHeight: string;
-  titleSize: string;
-}) {
+function CaseCard({ item, className, imageHeight, titleSize }: { item: any; className: string; imageHeight: string; titleSize: string }) {
   return (
     <div className={`group block cursor-pointer ${className}`}>
-      <div className={`relative mb-4 overflow-hidden bg-black ${imageHeight}`}>
+      <div className={`relative mb-6 overflow-hidden bg-neutral-900 border border-white/5 ${imageHeight}`}>
         <Image
           src={item.image}
           alt={item.title}
           fill
           sizes="(min-width: 1024px) 66vw, 100vw"
-          className="object-cover opacity-90 transition-transform duration-1000 ease-out group-hover:scale-[1.02]"
+          className="object-cover opacity-75 transition-transform duration-1000 ease-out group-hover:scale-105 group-hover:opacity-100"
         />
       </div>
-
-      <p className="text-[10px] font-semibold uppercase tracking-widest text-[#8a6a43]">
+      <p className="text-[10px] font-semibold uppercase tracking-widest text-[#c8aa78]">
         {item.type}
       </p>
-
-      <h3 className={`mt-1 font-serif font-light tracking-tight transition-colors group-hover:text-[#8a6a43] ${titleSize}`}>
+      <h3 className={`mt-2 font-serif font-light tracking-tight text-white transition-colors group-hover:text-[#c8aa78] ${titleSize}`}>
         {item.title}
       </h3>
     </div>
   );
 }
 
-function ImageCard({
-  title,
-  text,
-  image,
-  href,
-  meta,
-  index,
-}: {
-  title: string;
-  text: string;
-  image: string;
-  href: string;
-  meta: string;
-  index: number;
-}) {
+function ImageCard({ title, text, image, href, meta, index }: { title: string; text: string; image: string; href: string; meta: string; index: number }) {
   return (
     <Link href={href} className="group block cursor-pointer">
-      <div className="relative mb-6 h-[440px] overflow-hidden bg-black">
+      <div className="relative mb-6 h-[480px] overflow-hidden bg-neutral-900 border border-white/5">
         <Image
           src={image}
           alt={title}
           fill
           sizes="(min-width: 1024px) 33vw, 100vw"
-          className="object-cover opacity-90 transition-all duration-1000 ease-out group-hover:scale-[1.02] group-hover:opacity-100"
+          className="object-cover opacity-60 transition-all duration-1000 ease-out group-hover:scale-105 group-hover:opacity-100"
         />
-
-        <div className="absolute left-4 top-4 border border-white/10 bg-black/45 px-3 py-1 text-[9px] uppercase tracking-widest text-white backdrop-blur-sm">
+        <div className="absolute left-6 top-6 border border-[#c8aa78]/30 bg-[#121212]/80 px-3 py-1.5 text-[9px] uppercase tracking-widest text-[#c8aa78] backdrop-blur-md">
           {meta}
         </div>
-
-        <div className="absolute bottom-4 left-4 right-4 flex translate-y-2 items-center justify-between border border-white/10 bg-black/65 p-4 opacity-0 backdrop-blur-sm transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-          <span className="font-serif text-xs italic text-white/50">
+        <div className="absolute bottom-6 left-6 right-6 flex translate-y-4 items-center justify-between border border-white/10 bg-[#0a0a0a]/90 p-5 opacity-0 backdrop-blur-md transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+          <span className="font-serif text-sm italic text-[#c8aa78]">
             0{index + 1}
           </span>
-
           <span className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-widest text-white">
-            Подробнее
-            <ArrowUpRight className="h-3 w-3" />
+            К проектам
+            <ArrowRight className="h-4 w-4 text-[#c8aa78]" />
           </span>
         </div>
       </div>
-
-      <h3 className="font-serif text-2xl font-light tracking-tight text-[#121212]">
+      <h3 className="font-serif text-2xl font-light tracking-tight text-white group-hover:text-[#c8aa78] transition-colors">
         {title}
       </h3>
-
-      <p className="mt-3 max-w-sm text-sm font-light leading-relaxed text-black/60">
+      <p className="mt-3 max-w-sm text-sm font-light leading-relaxed text-white/50">
         {text}
       </p>
     </Link>
@@ -528,27 +479,25 @@ function ImageCard({
 
 function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-[#121212] pb-12 pt-20 text-white/80">
+    <footer className="border-t border-white/10 bg-[#050505] pb-12 pt-20 text-white/80">
       <Container>
         <div className="grid items-end gap-6 border-b border-white/10 pb-12 md:grid-cols-2">
           <div>
             <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.4em] text-[#c8aa78]">
               ARCHIPAR
             </p>
-
             <h2 className="font-serif text-3xl font-extralight tracking-tight text-white sm:text-4xl">
-              Строим бани, в которых <br />
-              <span className="italic text-[#c8aa78]">хочется отдыхать</span>
+              Строим комплексы, в которых <br />
+              <span className="italic text-[#c8aa78]">хочется остаться</span>
             </h2>
           </div>
-
           <div className="md:justify-self-end">
             <Link
               href="#request"
-              className="inline-flex items-center gap-2 border-b border-[#c8aa78] pb-1 text-xs uppercase tracking-widest text-[#c8aa78] transition-all duration-300 hover:border-[#dbbc8a] hover:text-[#dbbc8a]"
+              className="inline-flex items-center gap-3 border border-[#c8aa78] px-6 py-3 text-xs uppercase tracking-widest text-[#c8aa78] transition-all duration-300 hover:bg-[#c8aa78] hover:text-black"
             >
               Обсудить проект
-              <ArrowUpRight className="h-3 w-3 text-[#c8aa78]" />
+              <ArrowUpRight className="h-4 w-4" />
             </Link>
           </div>
         </div>
@@ -558,66 +507,44 @@ function Footer() {
             <p className="font-serif text-xl font-light tracking-[0.2em] text-white">
               ARCHIPAR
             </p>
-
-            <p className="mt-6 max-w-sm text-xs font-light leading-relaxed text-white/42">
-              Проектирование и строительство банных комплексов, бань, саун и хамамов под ключ.
+            <p className="mt-6 max-w-sm text-xs font-light leading-relaxed text-white/40">
+              Проектирование и строительство премиальных банных комплексов под ключ.
             </p>
           </div>
 
           <div className="grid grid-cols-2 gap-4 text-xs font-light uppercase tracking-wider text-white/50 md:col-span-4">
-            <div className="flex flex-col gap-3">
-              <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30">
-                Решения
+            <div className="flex flex-col gap-4">
+              <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#c8aa78]">
+                Направления
               </p>
-
-              <Link href="/bath-complexes" className="transition-colors duration-300 hover:text-[#c8aa78]">
-                Комплексы
-              </Link>
-              <Link href="/baths" className="transition-colors duration-300 hover:text-[#c8aa78]">
-                Бани
-              </Link>
-              <Link href="/saunas" className="transition-colors duration-300 hover:text-[#c8aa78]">
-                Сауны
-              </Link>
+              <Link href="/bath-complexes" className="transition-colors duration-300 hover:text-white">Комплексы</Link>
+              <Link href="/baths" className="transition-colors duration-300 hover:text-white">Бани</Link>
+              <Link href="/saunas" className="transition-colors duration-300 hover:text-white">Сауны</Link>
+              <Link href="/hamams" className="transition-colors duration-300 hover:text-white">Хамамы</Link>
             </div>
-
-            <div className="flex flex-col gap-3">
-              <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30">
+            <div className="flex flex-col gap-4">
+              <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#c8aa78]">
                 Навигация
               </p>
-
-              <Link href="/hamams" className="transition-colors duration-300 hover:text-[#c8aa78]">
-                Хамамы
-              </Link>
-              <Link href="#portfolio" className="transition-colors duration-300 hover:text-[#c8aa78]">
-                Портфолио
-              </Link>
-              <Link href="#request" className="transition-colors duration-300 hover:text-[#c8aa78]">
-                Контакты
-              </Link>
+              <Link href="#portfolio" className="transition-colors duration-300 hover:text-white">Портфолио</Link>
+              <Link href="#request" className="transition-colors duration-300 hover:text-white">Контакты</Link>
             </div>
           </div>
 
-          <div className="w-full space-y-3 text-xs font-light text-white/42 md:col-span-3 md:justify-self-end md:text-right">
-            <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/30">
+          <div className="w-full space-y-3 text-xs font-light text-white/40 md:col-span-3 md:justify-self-end md:text-right">
+            <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#c8aa78]">
               География
             </p>
-
-            <p className="font-normal uppercase tracking-wider text-white">
-              Россия & СНГ
-            </p>
-
+            <p className="font-normal uppercase tracking-wider text-white">Россия & За рубежом</p>
             <p className="leading-relaxed">
-              Частные и гостевые банные объекты для загородных домов и коммерческих проектов.
+              Работаем с частными резиденциями и коммерческими SPA-объектами.
             </p>
           </div>
         </div>
 
         <div className="mt-20 flex flex-col gap-4 border-t border-white/5 pt-8 text-[10px] uppercase tracking-widest text-white/20 sm:flex-row sm:justify-between">
           <p>© {new Date().getFullYear()} ARCHIPAR. Все права защищены.</p>
-          <p className="tracking-[0.3em] text-white/30">
-            Bath design & build
-          </p>
+          <p className="tracking-[0.3em] text-[#c8aa78]/50">Premium Bath Build</p>
         </div>
       </Container>
     </footer>
