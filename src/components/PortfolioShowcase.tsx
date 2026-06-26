@@ -15,7 +15,7 @@ export default function PortfolioShowcase() {
   return (
     <section className="py-24 bg-[#121212] text-white">
       <div className="container mx-auto px-6 max-w-7xl">
-        <h2 className="text-4xl md:text-6xl font-serif mb-20 text-white/90">Портфолио</h2>
+        <h2 className="text-4xl md:text-6xl font-serif mb-20 text-white/90">Банный комплекс под ключ</h2>
         {projects.map((p, idx) => (
           <div key={idx} className="mb-32">
             <div className="mb-10">
