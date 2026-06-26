@@ -6,7 +6,7 @@ const projects = [
     title: "THE BATH HOUSE",
     location: "Лондон, Гросвенор Гарденс, 1",
     desc: "Традиции русской бани напротив Букингемского дворца. №1 на TripAdvisor.",
-    images: ["/images/london-1.jpg", "/images/london-2.jpg", "/images/london-3.jpg"],
+    images: ["/images/ld/london-1.jpg", "/images/ld/london-2.jpg", "/images/ld/london-3.jpg"],
   },
   // ... остальные проекты по аналогии
 ];
