@@ -3,7 +3,6 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import ContactForm from "@/components/ContactForm";
 import type { ProductPageData } from "@/data/products";
-import BathComplexesPortfolio from "@/components/BathComplexesPortfolio";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -70,11 +69,6 @@ const engineeringCore = [
 ];
 
 export default function ProductPage({ product }: { product: ProductPageData }) {
-
-  if (product.slug === "bath-complexes") {
-    return <BathComplexesPortfolio />;
-  }
-
   return (
     <main className="bg-[#fcfaf7] text-[#121212] antialiased selection:bg-[#8a6a43] selection:text-white">
       <Header />
