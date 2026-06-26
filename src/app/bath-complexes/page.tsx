@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
-import ProductPage from "@/components/ProductPage";
-import { products } from "@/data/products";
+import BathComplexesPortfolio from "@/components/BathComplexesPortfolio";
 
 export const metadata: Metadata = {
-  title: "Банные комплексы — ARCHIPAR",
-  description:
-    "Проектируем и строим банные комплексы для загородных домов, гостевых домов и частных участков.",
+title: "Банные комплексы — ARCHIPAR",
+description:
+"Проектирование и реализация премиальных банных комплексов, SPA-пространств и хамамов.",
 };
 
 export default function BathComplexesPage() {
-  return <ProductPage product={products["bath-complexes"]} />;
+return <BathComplexesPortfolio />;
 }
