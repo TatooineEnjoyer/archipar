@@ -3,28 +3,32 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
-import {
-  useEffect,
-  useRef,
-  useState,
-  type KeyboardEvent,
-  type MouseEvent,
-} from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 
-const centerNavItems = [
+const navItems = [
   { label: "Комплексы", href: "/bath-complexes" },
   { label: "Бани", href: "/baths" },
   { label: "Сауны", href: "/saunas" },
   { label: "Хамамы", href: "/hamams" },
 ];
 
+const isDesktopPointer = () =>
+  window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+const isMobilePointer = () =>
+  window.matchMedia("(max-width: 980px), (hover: none), (pointer: coarse)")
+    .matches;
+
 export default function Header() {
   const [isCompact, setIsCompact] = useState(false);
+  const mobileBrandPrimedRef = useRef(false);
   const lastScrollYRef = useRef(0);
   const frameRef = useRef<number | null>(null);
 
   useEffect(() => {
-    lastScrollYRef.current = window.scrollY;
+    const initialScrollY = Math.max(window.scrollY, 0);
+    lastScrollYRef.current = initialScrollY;
+    setIsCompact(initialScrollY > 4 || isMobilePointer());
 
     const updateFromScroll = () => {
       frameRef.current = null;
@@ -32,14 +36,18 @@ export default function Header() {
       const currentScrollY = Math.max(window.scrollY, 0);
       const delta = currentScrollY - lastScrollYRef.current;
 
-      if (currentScrollY <= 8) {
-        setIsCompact(false);
-      } else if (delta > 3) {
+      if (currentScrollY <= 4) {
+        // На компьютере полное меню возвращается только на самой вершине.
+        // На телефоне остаётся компактный логотип: первое касание раскрывает меню.
+        setIsCompact(isMobilePointer());
+        mobileBrandPrimedRef.current = false;
+      } else if (delta > 0.5) {
+        // На любом движении вниз меню сразу сворачивается.
         setIsCompact(true);
-      } else if (delta < -8) {
-        setIsCompact(false);
+        mobileBrandPrimedRef.current = false;
       }
 
+      // Движение вверх намеренно ничего не раскрывает.
       lastScrollYRef.current = currentScrollY;
     };
 
@@ -60,24 +68,21 @@ export default function Header() {
     };
   }, []);
 
-  const toggleHeader = () => {
-    setIsCompact((current) => !current);
+  const handleBrandHover = () => {
+    if (isDesktopPointer()) {
+      setIsCompact(false);
+    }
   };
 
-  const handleGlassClick = (event: MouseEvent<HTMLDivElement>) => {
-    const target = event.target as HTMLElement;
-
-    if (target.closest("a, button")) {
+  const handleBrandClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (!isMobilePointer()) {
       return;
     }
 
-    toggleHeader();
-  };
-
-  const handleGlassKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-    if (event.key === "Enter" || event.key === " ") {
+    if (!mobileBrandPrimedRef.current) {
       event.preventDefault();
-      toggleHeader();
+      mobileBrandPrimedRef.current = true;
+      setIsCompact(false);
     }
   };
 
@@ -87,23 +92,14 @@ export default function Header() {
         isCompact ? "site-header--compact" : "site-header--expanded"
       }`}
     >
-      <div
-        className="site-header__inner"
-        onClick={handleGlassClick}
-        onKeyDown={handleGlassKeyDown}
-        role="button"
-        tabIndex={0}
-        aria-label={isCompact ? "Развернуть меню ARCHIPAR" : "Свернуть меню ARCHIPAR"}
-      >
-        <button
-          type="button"
+      <div className="site-header__inner">
+        <Link
+          href="/"
           className="site-header__brand"
-          onClick={(event) => {
-            event.stopPropagation();
-            toggleHeader();
-          }}
-          aria-expanded={!isCompact}
-          aria-label={isCompact ? "Развернуть меню" : "Свернуть меню"}
+          onMouseEnter={handleBrandHover}
+          onFocus={handleBrandHover}
+          onClick={handleBrandClick}
+          aria-label="ARCHIPAR — перейти на главную"
         >
           <span className="site-header__logo-mark" aria-hidden="true">
             <Image
@@ -123,51 +119,39 @@ export default function Header() {
             aria-hidden="true"
             strokeWidth={1.4}
           />
-        </button>
+        </Link>
 
-        <nav
-          className="site-header__center-nav"
-          aria-label="Основная навигация"
-          aria-hidden={isCompact}
-        >
-          {centerNavItems.map((item) => (
+        <div className="site-header__menu-cluster" aria-hidden={isCompact}>
+          <nav className="site-header__center-nav" aria-label="Основная навигация">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="site-header__nav-link"
+                tabIndex={isCompact ? -1 : undefined}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="site-header__right-actions">
             <Link
-              key={item.href}
-              href={item.href}
-              className="site-header__nav-link"
+              href="/#portfolio"
+              className="site-header__projects-link"
               tabIndex={isCompact ? -1 : undefined}
             >
-              {item.label}
+              Проекты
             </Link>
-          ))}
-        </nav>
 
-        <div className="site-header__right-actions" aria-hidden={isCompact}>
-          <Link
-            href="/#portfolio"
-            className="site-header__projects-link"
-            tabIndex={isCompact ? -1 : undefined}
-          >
-            Проекты
-          </Link>
-
-          <Link
-            href="/#request"
-            className="site-header__cta"
-            tabIndex={isCompact ? -1 : undefined}
-          >
-            Оставить заявку
-          </Link>
-        </div>
-
-        <div className="site-header__mobile-actions" aria-hidden={isCompact}>
-          <Link
-            href="/#request"
-            className="site-header__mobile-cta"
-            tabIndex={isCompact ? -1 : undefined}
-          >
-            Заявка
-          </Link>
+            <Link
+              href="/#request"
+              className="site-header__cta"
+              tabIndex={isCompact ? -1 : undefined}
+            >
+              Оставить заявку
+            </Link>
+          </div>
         </div>
       </div>
     </header>

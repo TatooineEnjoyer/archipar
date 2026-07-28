@@ -123,7 +123,7 @@ export default function Home() {
     <main className="bg-[#f8f5f0] text-[#121212] antialiased selection:bg-[#8a6a43] selection:text-white">
       <Header />
 
-      <section className="relative flex min-h-screen items-end overflow-hidden bg-[#1c1a17] pb-16 pt-32 md:pb-24">
+      <section className="hero-screen relative flex min-h-screen items-end overflow-hidden bg-[#1c1a17] pb-16 pt-32 md:pb-24">
         <div
           className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,#2a211a_0%,#1c1a17_68%)]"
           aria-hidden="true"

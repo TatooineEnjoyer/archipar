@@ -220,7 +220,7 @@ export default function BathComplexesPage() {
     <main className="bg-[#fcfaf7] text-[#121212] antialiased selection:bg-[#8a6a43] selection:text-white">
       <Header />
 
-      <section className="relative flex min-h-[94vh] items-end overflow-hidden bg-[#0b0a09] pb-16 pt-32 text-white md:pb-24">
+      <section className="hero-screen relative flex min-h-screen items-end overflow-hidden bg-[#0b0a09] pb-16 pt-32 text-white md:pb-24">
         <HeroVideo
           src="/videos/hero-bath-complexes-loop.mp4"
           className="ai-hero-video z-[1] opacity-55"

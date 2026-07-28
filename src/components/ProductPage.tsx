@@ -26,7 +26,7 @@ export default function ProductPage({ product }: { product: ProductPageData }) {
     <main className="bg-[#fcfaf7] text-[#121212] antialiased selection:bg-[#8a6a43] selection:text-white">
       <Header />
 
-      <section className="relative flex min-h-[92vh] items-end overflow-hidden bg-[#1c1a17] pb-16 pt-32 md:pb-24">
+      <section className="hero-screen relative flex min-h-screen items-end overflow-hidden bg-[#1c1a17] pb-16 pt-32 md:pb-24">
         {product.heroVideo ? (
           <HeroVideo
             src={product.heroVideo}
