@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import HeroVideo from "@/components/HeroVideo";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
+import RevealGroup from "@/components/RevealGroup";
 import {
   ArrowRight,
   Building2,
@@ -266,18 +267,25 @@ export default function BathComplexesPage() {
             title="Что объединяет все комплексы"
             text="Большой банный объект держится не только на отделке. Важны сценарии, воздух, вода, тепло, безопасность и документация."
           />
-          <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <RevealGroup className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {engineering.map((item) => {
               const Icon = item.icon;
               return (
-                <article key={item.title} className="group border border-black/5 bg-white p-7 shadow-sm transition-all duration-300 hover:border-[#c8aa78] hover:shadow-md">
-                  <Icon className="mb-5 h-6 w-6 text-[#8a6a43]" />
-                  <h3 className="mb-3 font-serif text-2xl font-light tracking-tight text-[#121212]">{item.title}</h3>
-                  <p className="text-sm font-light leading-relaxed text-black/60">{item.text}</p>
+                <article
+                  key={item.title}
+                  data-reveal-item
+                  data-reveal-kind="card"
+                  className="group border border-black/5 bg-white p-7 shadow-sm transition-all duration-300 hover:border-[#c8aa78] hover:shadow-md"
+                >
+                  <Icon className="reveal-card__lead mb-5 h-6 w-6 text-[#8a6a43]" />
+                  <div className="reveal-card__body">
+                    <h3 className="mb-3 font-serif text-2xl font-light tracking-tight text-[#121212]">{item.title}</h3>
+                    <p className="text-sm font-light leading-relaxed text-black/60">{item.text}</p>
+                  </div>
                 </article>
               );
             })}
-          </div>
+          </RevealGroup>
         </div>
       </section>
 
@@ -285,13 +293,13 @@ export default function BathComplexesPage() {
         <div className="container-premium">
           <div className="mb-20 max-w-3xl">
             <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.4em] text-[#c8aa78]">
-              Проекты
+              Реализованные проекты
             </p>
             <h2 className="font-serif text-4xl font-extralight tracking-tight text-white sm:text-5xl md:text-6xl">
               Банные комплексы ARCHIPAR
             </h2>
             <p className="mt-6 max-w-xl text-sm font-light leading-relaxed text-white/50">
-              Блоки построены так, чтобы можно было быстро заменить изображения, не меняя верстку и тексты.
+              Каждый комплекс создаётся под свой сценарий отдыха: от камерной частной бани до полноценного велнес-пространства с парными, хамамом, водой и зонами восстановления.
             </p>
           </div>
 
@@ -387,8 +395,12 @@ function ProjectBlock({ project, reverse }: { project: Project; reverse?: boolea
         </div>
 
         <div className={`lg:col-span-7 ${reverse ? "lg:order-1" : ""}`}>
-          <div className="grid grid-cols-12 gap-4">
-            <div className="group relative col-span-8 h-[390px] overflow-hidden bg-neutral-900 shadow-2xl md:h-[520px]">
+          <RevealGroup className="grid grid-cols-12 gap-4">
+            <div
+              data-reveal-item
+              data-reveal-kind="media"
+              className="group relative col-span-8 h-[390px] overflow-hidden bg-neutral-900 shadow-2xl md:h-[520px]"
+            >
               <Image
                 src={project.hero}
                 alt={project.title}
@@ -396,11 +408,15 @@ function ProjectBlock({ project, reverse }: { project: Project; reverse?: boolea
                 sizes="(min-width: 1024px) 58vw, 100vw"
                 className="object-cover opacity-90 transition-transform duration-1000 group-hover:scale-[1.04]"
               />
-              <div className="absolute left-4 top-4 border border-white/10 bg-black/60 px-3 py-1 text-[9px] uppercase tracking-widest text-white backdrop-blur-sm">
+              <div className="reveal-media__lead absolute left-4 top-4 border border-white/10 bg-black/60 px-3 py-1 text-[9px] uppercase tracking-widest text-white backdrop-blur-sm">
                 Главное фото
               </div>
             </div>
-            <div className="group relative col-span-4 mt-20 hidden h-[270px] overflow-hidden border-4 border-[#121212] bg-neutral-900 shadow-2xl sm:block md:h-[360px]">
+            <div
+              data-reveal-item
+              data-reveal-kind="media"
+              className="group relative col-span-4 mt-20 hidden h-[270px] overflow-hidden border-4 border-[#121212] bg-neutral-900 shadow-2xl sm:block md:h-[360px]"
+            >
               <Image
                 src={project.accent || project.hero}
                 alt={`${project.title} — деталь`}
@@ -409,13 +425,18 @@ function ProjectBlock({ project, reverse }: { project: Project; reverse?: boolea
                 className="object-cover opacity-90 transition-transform duration-1000 group-hover:scale-[1.04]"
               />
             </div>
-          </div>
+          </RevealGroup>
         </div>
       </div>
 
-      <div className="mt-12 grid gap-4 md:grid-cols-12">
+      <RevealGroup className="mt-12 grid gap-4 md:grid-cols-12">
         {project.gallery.map((image, index) => (
-          <div key={image.src} className={`group relative h-[290px] overflow-hidden bg-neutral-900 ${image.className || "md:col-span-6"}`}>
+          <div
+            key={image.src}
+            data-reveal-item
+            data-reveal-kind="media"
+            className={`group relative h-[290px] overflow-hidden bg-neutral-900 ${image.className || "md:col-span-6"}`}
+          >
             <Image
               src={image.src}
               alt={`${project.title} — ${image.label}`}
@@ -424,12 +445,12 @@ function ProjectBlock({ project, reverse }: { project: Project; reverse?: boolea
               className="object-cover opacity-90 transition-all duration-1000 group-hover:scale-[1.04] group-hover:opacity-100"
             />
             <div className="absolute inset-x-4 bottom-4 flex items-center justify-between border border-white/10 bg-black/60 p-4 text-white backdrop-blur-sm">
-              <span className="font-serif text-xs italic text-white/50">{String(index + 1).padStart(2, "0")}</span>
-              <span className="text-[10px] font-semibold uppercase tracking-widest text-white/80">{image.label}</span>
+              <span className="reveal-media__lead font-serif text-xs italic text-white/50">{String(index + 1).padStart(2, "0")}</span>
+              <span className="reveal-media__body text-[10px] font-semibold uppercase tracking-widest text-white/80">{image.label}</span>
             </div>
           </div>
         ))}
-      </div>
+      </RevealGroup>
     </article>
   );
 }

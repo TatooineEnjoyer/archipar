@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import HeroVideo from "@/components/HeroVideo";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
+import RevealGroup from "@/components/RevealGroup";
 import type { ProductPageData } from "@/data/products";
 import {
   ArrowRight,
@@ -100,22 +101,29 @@ export default function ProductPage({ product }: { product: ProductPageData }) {
             title="Из чего складывается качество"
             text="Каждый объект требует своей температуры, влажности, вентиляции, отделки и логики обслуживания. Наша команда проектирует взаимозависимую единую систему."
           />
-          <div className="mt-14 grid gap-8 md:grid-cols-3">
+          <RevealGroup className="mt-14 grid gap-8 md:grid-cols-3">
             {product.features.map((feature, index) => {
               const Icon = featureIcons[index] || Sparkles;
               return (
-                <article key={feature.title} className="group border border-black/5 bg-white p-8 shadow-sm transition-all duration-300 hover:border-[#c8aa78] hover:shadow-md">
-                  <Icon className="mb-6 h-6 w-6 text-[#8a6a43]" />
-                  <h3 className="mb-3 font-serif text-2xl font-light tracking-tight text-[#121212]">
-                    {feature.title}
-                  </h3>
-                  <p className="text-sm font-light leading-relaxed text-black/60">
-                    {feature.text}
-                  </p>
+                <article
+                  key={feature.title}
+                  data-reveal-item
+                  data-reveal-kind="card"
+                  className="group border border-black/5 bg-white p-8 shadow-sm transition-all duration-300 hover:border-[#c8aa78] hover:shadow-md"
+                >
+                  <Icon className="reveal-card__lead mb-6 h-6 w-6 text-[#8a6a43]" />
+                  <div className="reveal-card__body">
+                    <h3 className="mb-3 font-serif text-2xl font-light tracking-tight text-[#121212]">
+                      {feature.title}
+                    </h3>
+                    <p className="text-sm font-light leading-relaxed text-black/60">
+                      {feature.text}
+                    </p>
+                  </div>
                 </article>
               );
             })}
-          </div>
+          </RevealGroup>
         </div>
       </section>
 
@@ -124,8 +132,8 @@ export default function ProductPage({ product }: { product: ProductPageData }) {
           <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <SectionHeading
               eyebrow="Визуальный ориентир"
-              title="Фото для презентации формата"
-              text="Пути уже прописаны. Положите свои изображения в public/images/products/... с такими же именами или замените массив gallery в data/products.ts."
+              title="Пространство в деталях"
+              text="Материалы, свет, дерево, камень и оборудование собраны в цельные композиции, чтобы заранее почувствовать характер будущей бани, сауны или хамама."
             />
             {product.albumHref ? (
               <Link href={product.albumHref} className="inline-flex items-center gap-2 border-b border-[#8a6a43] pb-1 text-xs font-semibold uppercase tracking-widest text-[#8a6a43] transition-colors hover:text-black">
@@ -135,10 +143,12 @@ export default function ProductPage({ product }: { product: ProductPageData }) {
             ) : null}
           </div>
 
-          <div className="grid gap-6 md:grid-cols-12">
+          <RevealGroup className="grid gap-6 md:grid-cols-12">
             {product.gallery.map((image, index) => (
               <div
                 key={image}
+                data-reveal-item
+                data-reveal-kind="media"
                 className={`group relative overflow-hidden bg-[#1c1a17] ${index === 0 ? "h-[520px] md:col-span-7" : "h-[250px] md:col-span-5"}`}
               >
                 <Image
@@ -148,12 +158,12 @@ export default function ProductPage({ product }: { product: ProductPageData }) {
                   sizes="(min-width: 768px) 50vw, 100vw"
                   className="object-cover opacity-90 transition-all duration-1000 group-hover:scale-[1.04] group-hover:opacity-100"
                 />
-                <div className="absolute left-4 top-4 border border-white/10 bg-black/60 px-3 py-1 text-[9px] uppercase tracking-widest text-white backdrop-blur-sm">
+                <div className="reveal-media__lead absolute left-4 top-4 border border-white/10 bg-black/60 px-3 py-1 text-[9px] uppercase tracking-widest text-white backdrop-blur-sm">
                   {String(index + 1).padStart(2, "0")}
                 </div>
               </div>
             ))}
-          </div>
+          </RevealGroup>
         </div>
       </section>
 

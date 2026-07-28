@@ -1,0 +1,23 @@
+ARCHIPAR — применение исправления
+
+1. Скопируйте файлы поверх текущего проекта.
+2. Не удаляйте свою папку public: изображения и видео остаются в ней.
+3. Перед проверкой обязательно удалите старую статическую сборку:
+
+PowerShell:
+Remove-Item ".\.next" -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item ".\out" -Recurse -Force -ErrorAction SilentlyContinue
+npm install
+npm run build
+
+После сборки маршруты должны быть отдельными:
+out\index.html                    — главная страница
+out\bath-complexes\index.html    — банные комплексы
+out\baths\index.html             — бани
+out\saunas\index.html            — сауны
+out\hamams\index.html            — хамамы
+
+Для Timeweb без SSR:
+Команда сборки: npm run build
+Директория публикации: out
+SSR: выключен
