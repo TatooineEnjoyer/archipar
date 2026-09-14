@@ -129,12 +129,10 @@ export default function Home() {
           aria-hidden="true"
         />
 
-        <HeroVideo
-          src="/videos/hero-main-loop.mp4"
+        <img
+          src="/images/hero/hero-main.jpg"
+          alt="Банные комплексы ARCHIPAR"
           className="absolute inset-0 z-[1] h-full w-full object-cover opacity-70"
-          speed={0.7}
-          preload="auto"
-          ariaLabel="Банные комплексы ARCHIPAR"
         />
 
 
