@@ -130,7 +130,7 @@ export default function Home() {
         />
 
         <img
-          src="/images/hero/hero-main.jpg"
+          src="/images/hero/hero-main.mp4"
           alt="Банные комплексы ARCHIPAR"
           className="absolute inset-0 z-[1] h-full w-full object-cover opacity-70"
         />
